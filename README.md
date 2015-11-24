@@ -5,8 +5,8 @@ first school project, rebuild this list of functions
 
 ### libc functions
 
-[ ] memset
-[ ] bzero
+[o] memset
+[ o ] bzero
 [ ] memcpy
 [ ] memmove
 [ ] memchr
