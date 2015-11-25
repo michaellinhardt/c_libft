@@ -1,6 +1,6 @@
 # libft
-Start 25 nov. 2015
-- First school project, rebuild this list of functions.
+
+
 
 ### libc functions
 
@@ -68,4 +68,11 @@ Start 25 nov. 2015
 [ ] lstiter
 [ ] lstmap
 
-* README.md: lvacontin@github
+#log
+26 nov. 2015
+- Start project, rebuild this list of functions
+- Add Makefile, .gitignore, ft_strlen.c, ft_putchar.c
+27 nov. 2015
+- blabla
+
+	- * README.md: lvacontin@github
