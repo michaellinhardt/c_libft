@@ -1,12 +1,12 @@
 # libft
-first school project, rebuild this list of functions
+First school project, rebuild this list of functions.
 
 ## Mandatory
 
 ### libc functions
 
-[o] memset
-[ o ] bzero
+[ ] memset
+[ ] bzero
 [ ] memcpy
 [ ] memmove
 [ ] memchr
