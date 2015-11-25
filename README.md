@@ -59,7 +59,7 @@
 [ ] putendl-fd
 [ ] putnbr-fd
 
-## bonus
+### bonus
 
 [ ] lstnew
 [ ] lstdelone
@@ -68,11 +68,10 @@
 [ ] lstiter
 [ ] lstmap
 
-#log
-26 nov. 2015
-- Start project, rebuild this list of functions
-- Add Makefile, .gitignore, ft_strlen.c, ft_putchar.c
-27 nov. 2015
-- blabla
-
-	- * README.md: lvacontin@github
+###log
+- 26 nov. 2015
+	- Start project, rebuild this list of functions
+	- Add Makefile, .gitignore, ft_strlen.c, ft_putchar.c
+	- README.md credit to lvacontin@github
+- 27 nov. 2015
+	- blabla
