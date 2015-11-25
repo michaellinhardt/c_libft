@@ -1,7 +1,6 @@
 # libft
-First school project, rebuild this list of functions.
-
-## Mandatory
+Start 25 nov. 2015
+\tFirst school project, rebuild this list of functions.
 
 ### libc functions
 
@@ -68,3 +67,5 @@ First school project, rebuild this list of functions.
 [ ] lstadd
 [ ] lstiter
 [ ] lstmap
+
+####README.md: lvacontin@github
