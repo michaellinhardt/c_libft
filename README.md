@@ -10,7 +10,7 @@
 [ ] memmove
 [ ] memchr
 [ ] memcmp
-[ ] strlen
+[x] strlen
 [ ] strdup
 [ ] strcpy
 [ ] strncpy
@@ -50,7 +50,7 @@
 [ ] strtrim
 [ ] strsplit
 [ ] itoa
-[ ] putchar
+[x] putchar
 [ ] putstr
 [ ] putendl
 [ ] putnbr
