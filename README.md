@@ -1,6 +1,6 @@
 # libft
 Start 25 nov. 2015
-\tFirst school project, rebuild this list of functions.
+- First school project, rebuild this list of functions.
 
 ### libc functions
 
@@ -68,4 +68,4 @@ Start 25 nov. 2015
 [ ] lstiter
 [ ] lstmap
 
-####README.md: lvacontin@github
+* README.md: lvacontin@github
