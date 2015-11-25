@@ -1,6 +1,5 @@
 # libft
-
-
+42 school first project, rebuild this list of functions and a library to use them with futur project.
 
 ### libc functions
 
