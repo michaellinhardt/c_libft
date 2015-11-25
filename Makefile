@@ -25,7 +25,7 @@ FOLDER_INC		= ./inc/
 #PROJET VAR
 NAME			= libft.a
 LIST_HEADER		= libft.h
-LIST_SRC		= ft_strlen.c
+LIST_SRC		= ft_strlen.c ft_putchar.c
 
 #BUILD LIST
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
@@ -35,8 +35,9 @@ OBJS			= $(addprefix $(FOLDER_OBJ), $(LIST_OBJ))
 all: $(NAME)
 
 #TRANSFORM .c FILE INTO .o
-%.o: %.c
-	$(CC) $(CFLAGS) -I $(FOLDER_INC) -c -o $@ $<
+$(OBJS): $(SRCS)
+	@mkdir -p $(FOLDER_OBJ)
+	$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
@@ -44,7 +45,7 @@ $(NAME): $(OBJS)
 	@echo "$(OK) $(NAME)"
 
 clean:
-	@rm -f $(OBJS)
+	@rm -rf $(FOLDER_OBJ)
 
 fclean: clean
 	@rm -f $(NAME)
