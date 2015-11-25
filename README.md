@@ -1,8 +1,8 @@
 # libft
-Langage: C
-Subject: 42 school first project, rebuild this list of functions and a library to use them with futur project. See doc folder for more info.
-Start: 26 nov. 2015
-End: WIP
+- Langage: C
+- Subject: 42 school first project, rebuild this list of functions and a library to use them with futur project. See doc folder for more info.
+- Start: 26 nov. 2015
+- End: WIP
 
 ### libc functions
 
