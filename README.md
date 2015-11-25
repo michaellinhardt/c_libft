@@ -1,5 +1,8 @@
 # libft
-42 school first project, rebuild this list of functions and a library to use them with futur project.
+Langage: C
+Subject: 42 school first project, rebuild this list of functions and a library to use them with futur project. See doc folder for more info.
+Start: 26 nov. 2015
+End: WIP
 
 ### libc functions
 
@@ -70,7 +73,7 @@
 ###log
 - 26 nov. 2015
 	- Start project, rebuild this list of functions
-	- Add Makefile, .gitignore, ft_strlen.c, ft_putchar.c
-	- README.md credit to lvacontin@github
+	- Add README.md, Makefile, .gitignore, ft_strlen.c, ft_putchar.c
+	- README.md credit to dasilvacontin@github
 - 27 nov. 2015
 	- blabla
