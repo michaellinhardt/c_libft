@@ -21,6 +21,7 @@ CFLAGS			= -Wall -Werror -Wextra
 FOLDER_SRC		= ./src/
 FOLDER_OBJ		= ./obj/
 FOLDER_INC		= ./inc/
+FOLDER_LIB		= ./lib/
 
 #PROJET VAR
 NAME			= libft.a
@@ -53,6 +54,11 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean re help push clone
+
+test: re
+	clear
+	cp ./libft.a ./lib/libft.a
+	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L$(FOLDER_LIB) main.c -lft
 
 #DOCS
 help:
@@ -101,7 +107,7 @@ save-makefile: -save-makefile -status-env
 
 #LOAD ENV CONFIG FILE FROM env_libi
 # -zshrc, vimrc, Makefile
-load-env: load-makefile
+load-env:
 	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] conf_file/zshrc$(BLANK)"
 	cp ~/42/env_lib/conf_file/zshrc ~/.zshrc
 	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] conf_file/vimrc$(BLANK)"
