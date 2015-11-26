@@ -9,6 +9,7 @@
 [ ] memset
 [ ] bzero
 [ ] memcpy
+[ ] memccpy
 [ ] memmove
 [ ] memchr
 [ ] memcmp
@@ -56,10 +57,10 @@
 [ ] putstr
 [ ] putendl
 [ ] putnbr
-[ ] putchar-fd
-[ ] putstr-fd
-[ ] putendl-fd
-[ ] putnbr-fd
+[x] putchar_fd
+[ ] putstr_fd
+[ ] putendl_fd
+[ ] putnbr_fd
 
 ### bonus
 
