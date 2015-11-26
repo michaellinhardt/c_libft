@@ -24,7 +24,7 @@
 [ ] strrchr
 [ ] strstr
 [ ] strnstr
-[ ] strcmp
+[x] strcmp
 [ ] strncmp
 [ ] atoi
 [ ] isalpha

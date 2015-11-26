@@ -14,6 +14,7 @@ void	ft_putstr(char const *s);
 void	ft_putnbr(int n);
 
 size_t	ft_strlen(const char *s);
+int		ft_strcmp(const char *s1, const char *s2);
 
 int		ft_tolower(int c);
 int		ft_toupper(int c);
