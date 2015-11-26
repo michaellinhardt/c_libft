@@ -32,8 +32,8 @@
 [ ] isalnum
 [ ] isascii
 [ ] isprint
-[ ] toupper
-[ ] tolower
+[x] toupper
+[x] tolower
 
 ### suplementary functions
 
@@ -54,13 +54,13 @@
 [ ] strsplit
 [ ] itoa
 [x] putchar
-[ ] putstr
+[x] putstr
 [ ] putendl
-[ ] putnbr
+[x] putnbr
 [x] putchar_fd
-[ ] putstr_fd
+[x] putstr_fd
 [ ] putendl_fd
-[ ] putnbr_fd
+[x] putnbr_fd
 
 ### bonus
 
@@ -70,6 +70,10 @@
 [ ] lstadd
 [ ] lstiter
 [ ] lstmap
+
+### personnal add
+[x] islower
+[x] isupper
 
 ###log
 - 26 nov. 2015
