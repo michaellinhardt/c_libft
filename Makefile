@@ -26,7 +26,10 @@ FOLDER_LIB		= ./lib/
 #PROJET VAR
 NAME			= libft.a
 LIST_HEADER		= libft.h
-LIST_SRC		= ft_strlen.c ft_putchar.c ft_putchar_fd.c
+LIST_SRC		= ft_strlen.c \
+				ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c \
+				ft_putnbr_fd.c ft_putnbr.c \
+				ft_islower.c ft_isupper.c ft_toupper.c ft_tolower.c
 
 #BUILD LIST
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
@@ -37,7 +40,7 @@ all: $(NAME)
 
 #TRANSFORM .c FILE INTO .o
 $(FOLDER_OBJ)%.o: $(FOLDER_SRC)%.c
-	mkdir -p $(FOLDER_OBJ)
+	@mkdir -p $(FOLDER_OBJ)
 	$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
 
 $(NAME): $(OBJS)
@@ -59,6 +62,7 @@ clear:
 .PHONY: clean fclean re help push clone
 
 test: clear re
+	rm -f a.out
 	cp ./libft.a ./lib/libft.a
 	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L$(FOLDER_LIB) main.c -lft
 	./a.out
@@ -119,7 +123,7 @@ load-env:
 
 #LOAD MAKEFILE FROM ~/42/ TO CURRENT FOLDER
 load-makefile:
-	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] env_lib/Makefile$(BLANK)"
+	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] ~/42/Makefile$(BLANK)"
 	cp ~/42/Makefile ./Makefile
 
 #COPY DEFAULT FILE FOR NEW PROJECT
