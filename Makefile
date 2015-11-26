@@ -26,7 +26,7 @@ FOLDER_LIB		= ./lib/
 #PROJET VAR
 NAME			= libft.a
 LIST_HEADER		= libft.h
-LIST_SRC		= ft_strlen.c ft_putchar.c
+LIST_SRC		= ft_strlen.c ft_putchar.c ft_putchar_fd.c
 
 #BUILD LIST
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
@@ -36,8 +36,8 @@ OBJS			= $(addprefix $(FOLDER_OBJ), $(LIST_OBJ))
 all: $(NAME)
 
 #TRANSFORM .c FILE INTO .o
-$(OBJS): $(SRCS)
-	@mkdir -p $(FOLDER_OBJ)
+$(FOLDER_OBJ)%.o: $(FOLDER_SRC)%.c
+	mkdir -p $(FOLDER_OBJ)
 	$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
 
 $(NAME): $(OBJS)
@@ -46,19 +46,22 @@ $(NAME): $(OBJS)
 	@echo "$(OK) $(NAME)"
 
 clean:
-	@rm -rf $(FOLDER_OBJ)
+	rm -rf $(FOLDER_OBJ)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
+clear:
+	clear
+
 .PHONY: clean fclean re help push clone
 
-test: re
-	clear
+test: clear re
 	cp ./libft.a ./lib/libft.a
 	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L$(FOLDER_LIB) main.c -lft
+	./a.out
 
 #DOCS
 help:
@@ -82,10 +85,6 @@ help:
 	@echo "$(YELLOW)- \tClear PATH_ROOT/LOCAL and clone GIT inside"
 	@echo "$(RED)- init-projet LOCAL=\"projets/libft\""
 	@echo "$(YELLOW)- \tCopy new projet file to PATH_ROOT/LOCAL"
-	@echo "$(RED)- screen-mono"
-	@echo "$(YELLOW)- \tTurn off second screen (disper -s)"
-	@echo "$(RED)- screen-duo"
-	@echo "$(YELLOW)- \tTurn on second screen (disper -e)"
 
 
 #DISPLAY GIT STATUS ON env_lib FOLDER
@@ -177,8 +176,3 @@ endif
 	@ls -la $(PATH_ROOT)$(LOCAL)
 	@echo -n "$(BLANK)"
 	@pwd
-
-screen-mono:
-	disper -s
-screen-duo:
-	disper -e
