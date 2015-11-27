@@ -20,6 +20,8 @@ int		test_memset(void);
 int		test_memset_(void *s, int c, size_t n);
 int		test_bzero(void);
 int		test_bzero_(void *s, size_t n);
+int		test_memcpy(void);
+int		test_memcpy_(void *dest, const void *src, size_t n);
 
 int		main(void)
 {
@@ -50,7 +52,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_memset());
 	// BZERO
 	nb_err_total = (nb_err_total + test_bzero());
-
+	// MEMCPY
+	nb_err_total = (nb_err_total + test_memcpy());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -289,4 +292,53 @@ int		test_bzero_(void *s, size_t n)
 		nb_err = 1;
 	}
 	return (nb_err);
+}
+
+int		test_memcpy(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_MEMCPY");
+	
+	nb_err = (nb_err + test_memcpy_("TEST STRING 1 BLABLA", "Test.string 1 bloblo", 5));
+	nb_err = (nb_err + test_memcpy_("TEST STRING 1 BLABLA", "Test.string 1 bloblo", 25));
+	nb_err = (nb_err + test_memcpy_("TEST", "Test.string 1 bloblo", 6));
+
+	test_display_result("FT_MEMCPY", nb_err);
+	return (nb_err);
+}
+
+
+int		test_memcpy_(void *dest, const void *src, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	int		str_len;
+	char	*dest_1;
+	char	*dest_2;
+	char	*src_1;
+
+
+	nb_err = 0;
+
+	dest_1 = strdup(dest);	
+	dest_2 = strdup(dest);	
+	src_1 = strdup(src);
+	str_len = ( n > strlen(dest_1)) ? n : strlen(dest_1);
+	printf("->(\"%s\", \"%s\", %zu);\n", dest_1, src_1, n);
+	memcpy(dest_1, src_1, n);
+	ft_memcpy(dest_2, src_1, n);
+	printf(" [...memcpy]\t%s\n", dest_1);
+	printf(" [ft_memcpy]\t%s\n", dest_2);
+	compare = memcmp(dest_1, dest_2, str_len);
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+
 }
