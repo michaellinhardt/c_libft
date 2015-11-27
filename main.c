@@ -10,8 +10,13 @@
 #define FAIL	"\x1B[31m[ XX ]\x1B[37m"
 
 int		test_run(void);
+void	test_display_result(char *s, int nb_err);
+void	test_display_title(char *s);
 int		test_strlen(void);
 int		test_strlen_(char *str);
+int		test_putchar_putstr_putnbr(void);
+int		test_toupper_tolower(void);
+int		test_memset(void);
 
 int		main(void)
 {
@@ -23,91 +28,51 @@ int		test_run(void)
 {	
 	int		nb_err;
 	int		nb_err_total;
-	char	*color;
+	
+	nb_err_total = 0;
+	nb_err = 0;
 
-	// TEST STRLEN
-	nb_err_total = 0; nb_err = 0;
-	printf("%s----[ft_strlen]--VS--[strlen]----%s\n", YELLOW, WHITE);
-	nb_err = (nb_err + test_strlen());
-	color = (nb_err == 0) ? GREEN : RED ;
-	printf("%s[ft_strlen] - %i erreur(s)%s\n\n", color, nb_err, WHITE);
+	// STRLEN
+	nb_err = test_strlen();
+	nb_err_total = (nb_err_total + nb_err);
+	nb_err = 0;
 
 	// PUTCHAR & PUTCHAR_FD
-	nb_err_total = (nb_err_total + nb_err); nb_err = 0;	
-	printf("%s------[ft_putchar]------%s\n123 \t4\n", YELLOW, WHITE);
-	ft_putchar('1');ft_putchar('2');ft_putchar('3');ft_putchar(' ');ft_putchar('\t');ft_putchar('4');ft_putchar('\n');
-	printf("%s[ft_putchar] - ?? erreur(s) (verif manuel)%s\n\n", BLUE, WHITE);
-	printf("%s------[ft_putchar_fd]------%s\n", YELLOW, WHITE);
-	ft_putchar_fd('F', 1);ft_putchar_fd('D', 1);ft_putchar_fd('=', 1);ft_putchar_fd('2', 1);ft_putchar_fd('\n', 1);
-	ft_putchar_fd('F', 2);ft_putchar_fd('D', 2);ft_putchar_fd('=', 2);ft_putchar_fd('2', 2);ft_putchar_fd('\n', 2);
-	ft_putchar_fd('F', 3);ft_putchar_fd('D', 3);ft_putchar_fd('=', 3);ft_putchar_fd('3', 3);ft_putchar_fd('\n', 3);
-	printf("%s[ft_putchar_fd] - ?? erreur(s) (verif manuel)%s\n\n", BLUE, WHITE);
-
-	// PUTSTR & PUTSTR_FD
-	printf("%s------[ft_putstr]------%s\n", YELLOW, WHITE);
-	ft_putstr("Ceci est une chaine de test\n\n");
-	printf("%s------[ft_putstr_fd]------%s\n", YELLOW, WHITE);
-	ft_putstr_fd("Cette chaine est sur le FD 1\n", 1);
-	ft_putstr_fd("Cette chaine est sur le FD 2\n", 2);
-	ft_putstr_fd("Cette chaine est sur le FD 3\n", 3);
-	printf("%s[ft_putstr] - ?? erreur(s) (verif manuel)%s\n\n", BLUE, WHITE);
-
-	// PUTNBR & PUTNBR FD
-	printf("%s------[ft_putnbr]------%s\n", YELLOW, WHITE);
-	ft_putnbr(-1); write(1, "\t-1\n", 4);
-	ft_putnbr(0); write(1, "\t0\n", 3);
-	ft_putnbr(1); write(1, "\t1\n", 3);
-	ft_putnbr(-47895); write(1, "\t-47895\n", 8);
-	printf("%s[ft_putnbr] - ?? erreur(s) (verif manuel)%s\n\n", BLUE, WHITE);
-	printf("%s------[ft_putnbr_fd]------%s\n", YELLOW, WHITE);
-	ft_putnbr_fd(-1, 1); write(1, "\t-1\tFD=1\n", 9);
-	ft_putnbr_fd(0, 1); write(1, "\t0\tFD=1\n", 8);
-	ft_putnbr_fd(1, 1); write(1, "\t1\tFD=1\n", 8);
-	ft_putnbr_fd(-47895, 1); write(1, "\t-47895\tFD=1\n", 13);
-	ft_putnbr_fd(47895, 1); write(1, "\t47895\tFD=1\n", 12);
-	ft_putnbr_fd(47895, 2); write(2, "\t47895\tFD=2\n", 12);
-	ft_putnbr_fd(47895, 3); write(3, "\t47895\tFD=3\n", 12);
-	printf("%s[ft_putnbr_fd] - ?? erreur(s) (verif manuel)%s\n\n", BLUE, WHITE);
-
+	test_putchar_putstr_putnbr();
 	// TOUPPER
-	nb_err_total = (nb_err_total + nb_err); nb_err = 0;
-	printf("%s------[ft_toupper]------%s\n", YELLOW, WHITE);
-	color = ( ('A' - ft_toupper('A')) == 0) ? OK : FAIL ;
-	nb_err = ( ('A' - ft_toupper('A')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ A ]\t [ %c ]\n", color, ft_toupper('A'));
-	color = ( ('Z' - ft_toupper('z')) == 0) ? OK : FAIL ;
-	nb_err = ( ('Z' - ft_toupper('z')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ z ]\t [ %c ]\n", color, ft_toupper('z'));
-	color = ( ('K' - ft_toupper('k')) == 0) ? OK : FAIL ;
-	nb_err = ( ('K' - ft_toupper('k')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ k ]\t [ %c ]\n", color, ft_toupper('k'));
-	color = ( ('-' - ft_toupper('-')) == 0) ? OK : FAIL ;
-	nb_err = ( ('-' - ft_toupper('-')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ - ]\t [ %c ]\n", color, ft_toupper('-'));
-	color = (nb_err == 0) ? GREEN : RED ;
-	printf("%s[ft_toupper] - %i erreur(s)%s\n\n", color, nb_err, WHITE);
-	// TOLOWER
-	nb_err_total = (nb_err_total + nb_err); nb_err = 0;
-	printf("%s------[ft_tolower]------%s\n", YELLOW, WHITE);
-	color = ( ('a' - ft_tolower('a')) == 0) ? OK : FAIL ;
-	nb_err = ( ('a' - ft_tolower('a')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ a ]\t [ %c ]\n", color, ft_tolower('a'));
-	color = ( ('z' - ft_tolower('Z')) == 0) ? OK : FAIL ;
-	nb_err = ( ('z' - ft_tolower('Z')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ Z ]\t [ %c ]\n", color, ft_tolower('Z'));
-	color = ( ('k' - ft_tolower('K')) == 0) ? OK : FAIL ;
-	nb_err = ( ('k' - ft_tolower('K')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ K ]\t [ %c ]\n", color, ft_tolower('K'));
-	color = ( ('-' - ft_tolower('-')) == 0) ? OK : FAIL ;
-	nb_err = ( ('-' - ft_tolower('-')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ - ]\t [ %c ]\n", color, ft_tolower('-'));
-	color = (nb_err == 0) ? GREEN : RED ;
-	printf("%s[ft_tolower] - %i erreur(s)%s\n\n", color, nb_err, WHITE);
+	nb_err_total = (nb_err_total + test_toupper_tolower());
+
+
+	/****************************
+	 * 		MEM FUNCTION		*
+	 ****************************/
+	 // MEMSET
+	//nb_err_total = (nb_err_total + test_memset());
+	
 
 	// RESULTAT FINAL
 	nb_err_total = (nb_err_total + nb_err);
 	printf("[TOTAL] - %i erreur(s)\n", nb_err_total);
-	return(nb_err);
+	return(nb_err_total);
+}
+
+void	test_display_title(char *s)
+{
+	printf("%s------[%s]------%s\n", YELLOW, s, WHITE);
+}
+
+void	test_display_result(char *s, int nb_err)
+{
+	char *color;
+
+	if (nb_err == -1)
+		printf("%s[%s] - ?? erreur(s) (verif manuel)%s", BLUE, s, WHITE);
+	else
+	{
+		color = (nb_err == 0) ? GREEN : RED ;
+		printf("%s[%s] - %i erreur(s)%s", color, s, nb_err, WHITE);
+	}
+	printf("\n\n\n");
 }
 
 int		test_strlen(void)
@@ -115,11 +80,13 @@ int		test_strlen(void)
 	int		nb_err;
 
 	nb_err = 0;
+	test_display_title("FT_STRLEN");
 	nb_err = (nb_err + test_strlen_("@-?.\\lol		hi"));
 	nb_err = (nb_err + test_strlen_("blabla"));
 	nb_err = (nb_err + test_strlen_("	ojjohj 	jhi ojh	ihiz zeiflh ziefh z fzihfoizh	 zifhzifh zihzeif 	ioh zfih ze 	oih zihf z zoifh 	 onceih izhf zifdh 	 izohfoizh fzihf 	oih fi zifh zifh zoifh zidh 	ioh zoifh ziohf zoi zofhzoihfezoi h	ih oizhfoizhfoizh foizhfoh	 zoiuehf zoihf oizh 	oi zoifhzoifh ifh zfih zoifeh zoifh 	i hizfh oizefh i 	i zoiefh zohf ziohf zoih	ih zihf oizhf 	oihf ih"));
 	nb_err = (nb_err + test_strlen_(" "));
 	nb_err = (nb_err + test_strlen_(""));
+	test_display_result("ft_strlen", nb_err);
 	
 	return(nb_err);
 }
@@ -138,4 +105,104 @@ int		test_strlen_(char *str)
 		return (1);
 }
 
+int		test_putchar_putstr_putnbr(void)
+{
+	// PUTCHAR & PUTCHAR_FD
+	test_display_title("FT_PUTCHAR");
+	printf("123 \t4\n");
+	ft_putchar('1');ft_putchar('2');ft_putchar('3');ft_putchar(' ');ft_putchar('\t');ft_putchar('4');ft_putchar('\n');
+	test_display_result("FT_PUTCHAR", -1);
+	test_display_title("FT_PUTCHAR_FD");
+	ft_putchar_fd('F', 1);ft_putchar_fd('D', 1);ft_putchar_fd('=', 1);ft_putchar_fd('2', 1);ft_putchar_fd('\n', 1);
+	ft_putchar_fd('F', 2);ft_putchar_fd('D', 2);ft_putchar_fd('=', 2);ft_putchar_fd('2', 2);ft_putchar_fd('\n', 2);
+	ft_putchar_fd('F', 3);ft_putchar_fd('D', 3);ft_putchar_fd('=', 3);ft_putchar_fd('3', 3);ft_putchar_fd('\n', 3);
+	test_display_result("FT_PUTCHAR_FD", -1);
 
+	// PUTSTR & PUTSTR_FD
+	test_display_title("FT_PUTSTR");
+	ft_putstr("Ceci est une chaine de test\n");
+	test_display_result("FT_PUTSTR", -1);
+	test_display_title("FT_PUTSTR_FD");
+	ft_putstr_fd("Cette chaine est sur le FD 1\n", 1);
+	ft_putstr_fd("Cette chaine est sur le FD 2\n", 2);
+	ft_putstr_fd("Cette chaine est sur le FD 3\n", 3);
+	test_display_result("FT_PUTSTR_FD", -1);
+
+	// PUTNBR & PUTNBR FD
+	test_display_title("FT_PUTNBR");
+	ft_putnbr(-1); write(1, "\t-1\n", 4);
+	ft_putnbr(0); write(1, "\t0\n", 3);
+	ft_putnbr(1); write(1, "\t1\n", 3);
+	ft_putnbr(-47895); write(1, "\t-47895\n", 8);
+	test_display_result("FT_PUTNBR", -1);
+	test_display_title("FT_PUTNBR_FD");
+	ft_putnbr_fd(-1, 1); write(1, "\t-1\tFD=1\n", 9);
+	ft_putnbr_fd(0, 1); write(1, "\t0\tFD=1\n", 8);
+	ft_putnbr_fd(1, 1); write(1, "\t1\tFD=1\n", 8);
+	ft_putnbr_fd(-47895, 1); write(1, "\t-47895\tFD=1\n", 13);
+	ft_putnbr_fd(47895, 1); write(1, "\t47895\tFD=1\n", 12);
+	ft_putnbr_fd(47895, 2); write(2, "\t47895\tFD=2\n", 12);
+	ft_putnbr_fd(47895, 3); write(3, "\t47895\tFD=3\n", 12);
+	test_display_result("FT_PUTNBR_FD", -1);
+
+	return (0);
+}
+
+int		test_toupper_tolower(void)
+{
+	int		nb_err;
+	int		nb_err_total;
+	char	*color;
+
+	nb_err = 0;
+	nb_err_total = 0;
+
+	// TOUPPER
+	test_display_title("FT_TOUPPER");
+	color = ( ('A' - ft_toupper('A')) == 0) ? OK : FAIL ;
+	nb_err = ( ('A' - ft_toupper('A')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ A ]\t [ %c ]\n", color, ft_toupper('A'));
+	color = ( ('Z' - ft_toupper('z')) == 0) ? OK : FAIL ;
+	nb_err = ( ('Z' - ft_toupper('z')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ z ]\t [ %c ]\n", color, ft_toupper('z'));
+	color = ( ('K' - ft_toupper('k')) == 0) ? OK : FAIL ;
+	nb_err = ( ('K' - ft_toupper('k')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ k ]\t [ %c ]\n", color, ft_toupper('k'));
+	color = ( ('-' - ft_toupper('-')) == 0) ? OK : FAIL ;
+	nb_err = ( ('-' - ft_toupper('-')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ - ]\t [ %c ]\n", color, ft_toupper('-'));
+	test_display_result("FT_TOUPPER", nb_err);
+
+	// TOLOWER
+	nb_err_total = nb_err; nb_err = 0;
+	test_display_title("FT_TOLOWER");
+	color = ( ('a' - ft_tolower('a')) == 0) ? OK : FAIL ;
+	nb_err = ( ('a' - ft_tolower('a')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ a ]\t [ %c ]\n", color, ft_tolower('a'));
+	color = ( ('z' - ft_tolower('Z')) == 0) ? OK : FAIL ;
+	nb_err = ( ('z' - ft_tolower('Z')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ Z ]\t [ %c ]\n", color, ft_tolower('Z'));
+	color = ( ('k' - ft_tolower('K')) == 0) ? OK : FAIL ;
+	nb_err = ( ('k' - ft_tolower('K')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ K ]\t [ %c ]\n", color, ft_tolower('K'));
+	color = ( ('-' - ft_tolower('-')) == 0) ? OK : FAIL ;
+	nb_err = ( ('-' - ft_tolower('-')) == 0) ? nb_err : (nb_err + 1) ;
+	printf("%s[ - ]\t [ %c ]\n", color, ft_tolower('-'));
+	test_display_result("FT_TOLOWER", nb_err);
+	nb_err_total = (nb_err_total + nb_err);
+
+	return (nb_err_total);
+}
+
+int		test_memset(void)
+{
+	int		nb_err;
+	char	*color;
+
+	nb_err = 0;
+	printf("%s------[ft_memset]------%s\n", YELLOW, WHITE);
+
+	color = (nb_err == 0) ? GREEN : RED ;
+	printf("%s[ft_memset] - %i erreur(s)%s\n\n", color, nb_err, WHITE);
+	return (nb_err);
+}
