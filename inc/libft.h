@@ -9,8 +9,8 @@ typedef struct			s_list
 {
 		void			*content;
 		size_t			content_size;
-		struct s_list	*next
-}						t_list
+		struct s_list	*next;
+}						t_list;
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
