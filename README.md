@@ -78,7 +78,9 @@
 ###log
 - 26 nov. 2015
 	- Start project, rebuild this list of functions
-	- Add README.md, Makefile, .gitignore, ft_strlen.c, ft_putchar.c
+	- Add README.md, Makefile, .gitignore
 	- README.md credit to dasilvacontin@github
 - 27 nov. 2015
-	- blabla
+	- Add libft.h with all declaration
+	- Add test file main.c for this uploaded functions ->
+	- Add bzero, islower, isupper, memset, putchar, putchar_fd, putnbr, putnbr_fd, putstr, putstr_fd, strcmp, strlen, tolower, toupper
