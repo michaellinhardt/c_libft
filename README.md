@@ -7,7 +7,7 @@
 ### libc functions
 
 [x] memset
-[ ] bzero
+[x] bzero
 [ ] memcpy
 [ ] memccpy
 [ ] memmove
