@@ -8,8 +8,8 @@
 
 [x] memset
 [x] bzero
-[ ] memcpy
-[ ] memccpy
+[x] memcpy
+[x] memccpy
 [ ] memmove
 [ ] memchr
 [ ] memcmp
@@ -74,6 +74,7 @@
 ### personnal add
 [x] islower
 [x] isupper
+[ ] isspace
 
 ###log
 - 26 nov. 2015
