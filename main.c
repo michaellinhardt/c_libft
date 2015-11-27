@@ -17,6 +17,7 @@ int		test_strlen_(char *str);
 int		test_putchar_putstr_putnbr(void);
 int		test_toupper_tolower(void);
 int		test_memset(void);
+int		test_memset_(void *s, int c, size_t n);
 
 int		main(void)
 {
@@ -36,10 +37,7 @@ int		test_run(void)
 	nb_err = test_strlen();
 	nb_err_total = (nb_err_total + nb_err);
 	nb_err = 0;
-
-	// PUTCHAR & PUTCHAR_FD
-	test_putchar_putstr_putnbr();
-	// TOUPPER
+	// TOUPPER & TOLOWER
 	nb_err_total = (nb_err_total + test_toupper_tolower());
 
 
@@ -47,8 +45,12 @@ int		test_run(void)
 	 * 		MEM FUNCTION		*
 	 ****************************/
 	 // MEMSET
-	//nb_err_total = (nb_err_total + test_memset());
-	
+	nb_err_total = (nb_err_total + test_memset());
+
+
+	// PUTCHAR & PUTCHAR_FD
+	test_putchar_putstr_putnbr();
+
 
 	// RESULTAT FINAL
 	nb_err_total = (nb_err_total + nb_err);
@@ -113,7 +115,7 @@ int		test_putchar_putstr_putnbr(void)
 	ft_putchar('1');ft_putchar('2');ft_putchar('3');ft_putchar(' ');ft_putchar('\t');ft_putchar('4');ft_putchar('\n');
 	test_display_result("FT_PUTCHAR", -1);
 	test_display_title("FT_PUTCHAR_FD");
-	ft_putchar_fd('F', 1);ft_putchar_fd('D', 1);ft_putchar_fd('=', 1);ft_putchar_fd('2', 1);ft_putchar_fd('\n', 1);
+	ft_putchar_fd('F', 1);ft_putchar_fd('D', 1);ft_putchar_fd('=', 1);ft_putchar_fd('1', 1);ft_putchar_fd('\n', 1);
 	ft_putchar_fd('F', 2);ft_putchar_fd('D', 2);ft_putchar_fd('=', 2);ft_putchar_fd('2', 2);ft_putchar_fd('\n', 2);
 	ft_putchar_fd('F', 3);ft_putchar_fd('D', 3);ft_putchar_fd('=', 3);ft_putchar_fd('3', 3);ft_putchar_fd('\n', 3);
 	test_display_result("FT_PUTCHAR_FD", -1);
@@ -197,12 +199,43 @@ int		test_toupper_tolower(void)
 int		test_memset(void)
 {
 	int		nb_err;
-	char	*color;
 
 	nb_err = 0;
-	printf("%s------[ft_memset]------%s\n", YELLOW, WHITE);
+	test_display_title("FT_MEMSET");
+	
+	nb_err = (nb_err + test_memset_("Test with to long n", '-', 22));
+	nb_err = (nb_err + test_memset_("Test with normal sentence and n", '$', 7));
+	nb_err = (nb_err + test_memset_("Test with n = 0", '$', 0));
+	nb_err = (nb_err + test_memset_("", '0', 4));
+	nb_err = (nb_err + test_memset_("aa\0aa", '?', 3));
 
-	color = (nb_err == 0) ? GREEN : RED ;
-	printf("%s[ft_memset] - %i erreur(s)%s\n\n", color, nb_err, WHITE);
+	test_display_result("FT_MEMSET", nb_err);
+	return (nb_err);
+}
+
+int		test_memset_(void *s, int c, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	char	*str;
+	char	*str2;
+
+	nb_err = 0;
+
+	str = strdup(s);	
+	str2 = strdup(s);
+	printf("->(\"%s\", '%c', %zu);\n", str, c, n);
+	memset(str, c, n);
+	ft_memset(str2, c, n);
+	printf(" [...memset]\t%s\n", str);
+	printf(" [ft_memset]\t%s\n", str2);
+	compare = strcmp(str, str2);
+	if (compare == 0)
+		printf("%s strcmp = %d\n", OK, compare);
+	else
+	{
+		printf("%s strcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
 	return (nb_err);
 }
