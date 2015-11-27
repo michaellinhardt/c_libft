@@ -18,6 +18,8 @@ int		test_putchar_putstr_putnbr(void);
 int		test_toupper_tolower(void);
 int		test_memset(void);
 int		test_memset_(void *s, int c, size_t n);
+int		test_bzero(void);
+int		test_bzero_(void *s, size_t n);
 
 int		main(void)
 {
@@ -46,6 +48,8 @@ int		test_run(void)
 	 ****************************/
 	 // MEMSET
 	nb_err_total = (nb_err_total + test_memset());
+	// BZERO
+	nb_err_total = (nb_err_total + test_bzero());
 
 
 	// PUTCHAR & PUTCHAR_FD
@@ -235,6 +239,53 @@ int		test_memset_(void *s, int c, size_t n)
 	else
 	{
 		printf("%s strcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
+int		test_bzero(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_BZERO");
+	
+	nb_err = (nb_err + test_bzero_("Test with to long n", 22));
+	nb_err = (nb_err + test_bzero_("Test with normal sentence and n", 7));
+	nb_err = (nb_err + test_bzero_("Test with n = 0", 0));
+	nb_err = (nb_err + test_bzero_("", 4));
+	nb_err = (nb_err + test_bzero_("aa\0aa", 3));
+
+	test_display_result("FT_BZERO", nb_err);
+	return (nb_err);
+}
+
+int		test_bzero_(void *s, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	int		str_len;
+	char	*str;
+	char	*str2;
+
+
+	nb_err = 0;
+
+	str = strdup(s);	
+	str2 = strdup(s);
+	str_len = ( n > strlen(str)) ? n : strlen(str);
+	printf("->(\"%s\", %zu);\n", str, n);
+	bzero(str, n);
+	ft_bzero(str2, n);
+	printf(" [...bzero]\t%s\n", str);
+	printf(" [ft_bzero]\t%s\n", str2);
+	compare = memcmp(str, str2, str_len);
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
 		nb_err = 1;
 	}
 	return (nb_err);
