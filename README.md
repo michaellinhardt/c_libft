@@ -78,7 +78,7 @@
 
 [ ] header define color 
 
-###log
+###changelog
 - 26 nov. 2015
 	- Start project, rebuild this list of functions
 	- Add README.md, Makefile, .gitignore
