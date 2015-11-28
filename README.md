@@ -27,7 +27,7 @@
 [x] strcmp
 [ ] strncmp
 [ ] atoi
-[ ] isalpha
+[x] isalpha
 [ ] isdigit
 [ ] isalnum
 [ ] isascii
@@ -75,6 +75,8 @@
 [x] islower
 [x] isupper
 [ ] isspace
+
+[ ] header define color 
 
 ###log
 - 26 nov. 2015

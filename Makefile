@@ -1,6 +1,6 @@
 # https://github.com/nesthub/
 # PATH VAR & VERSION 
-VERSION 		= v0.8
+VERSION 		= v0.9
 PATH_ROOT		= ~/42/
 PATH_GITHUB		= https://github.com/nesthub/
 
@@ -30,6 +30,7 @@ LIST_SRC		= ft_strlen.c ft_strcmp.c \
 				ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c \
 				ft_putnbr_fd.c ft_putnbr.c \
 				ft_islower.c ft_isupper.c ft_toupper.c ft_tolower.c \
+				ft_isalpha.c \
 				ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c
 
 #BUILD LIST
@@ -79,10 +80,10 @@ help:
 	@echo "$(RED)- load-makefile"
 	@echo "$(YELLOW)- \tLoad Makefile from ~/42 to ./"
 	@echo "$(RED)- save-makefile"
-	@echo "$(YELLOW)- \tSave from ~/42/ to ~/42/env_lib/"
-	@echo "$(RED)- load-env"
+	@echo "$(YELLOW)- \tSave from ~/42/ to ~/42/config_workspace/"
+	@echo "$(RED)- load-workspace"
 	@echo "$(YELLOW)- \tLoad git env file (~/.vimrc, etc)"
-	@echo "$(RED)- save-env"
+	@echo "$(RED)- save-workspace"
 	@echo "$(YELLOW)- \tSave actual env file (~/.vimrc, etc)"
 	@echo "$(RED)- push ADD=main.c COMMIT=\"commit message\""
 	@echo "$(YELLOW)- \tAdd, commit and push file"
@@ -92,35 +93,35 @@ help:
 	@echo "$(YELLOW)- \tCopy new projet file to PATH_ROOT/LOCAL"
 
 
-#DISPLAY GIT STATUS ON env_lib FOLDER
+#DISPLAY GIT STATUS ON config_workspace FOLDER
 -status-env:
-	@echo "$(BLUE)*** [$(YELLOW)STATUS$(BLUE)] ~/42/env_lib$(BLANK)"
-	@cd ~/42/env_lib/ && git status
-	@echo cd ~/42/env_lib
+	@echo "$(BLUE)*** [$(YELLOW)STATUS$(BLUE)] ~/42/config_workspace$(BLANK)"
+	@cd ~/42/config_workspace/ && git status
+	@echo cd ~/42/config_workspace
 
 #ROUTINE FOR SAVE ENV CONFIG
 # - zshrc, vimrc, Makefile
-save-env: -save-env -save-makefile -status-env
--save-env:
-	@mkdir -p ~/42/env_lib/conf_file
+save-workspace: -save-workspace -save-makefile -status-env
+-save-workspace:
+	@mkdir -p ~/42/config_workspace/conf_file
 	@echo "$(BLUE)*** [$(YELLOW)SAVE$(BLUE)] ~/.zshrc$(BLANK)"
-	cp ~/.zshrc ~/42/env_lib/conf_file/zshrc
+	cp ~/.zshrc ~/42/config_workspace/conf_file/zshrc
 	@echo "$(BLUE)*** [$(YELLOW)SAVE$(BLUE)] ~/.vimrc$(BLANK)"
-	cp ~/.vimrc ~/42/env_lib/conf_file/vimrc
+	cp ~/.vimrc ~/42/config_workspace/conf_file/vimrc
 
 #ROUTINE FOR SAVE MAKEFILE
 save-makefile: -save-makefile -status-env
 -save-makefile:
 	@echo "$(BLUE)*** [$(YELLOW)SAVE$(BLUE)] ~/42/Makefile$(BLANK)"
-	cp ~/42/Makefile ~/42/env_lib/Makefile
+	cp ~/42/Makefile ~/42/config_workspace/Makefile
 
-#LOAD ENV CONFIG FILE FROM env_libi
+#LOAD ENV CONFIG FILE FROM config_workspacei
 # -zshrc, vimrc, Makefile
-load-env:
+load-workspace:
 	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] conf_file/zshrc$(BLANK)"
-	cp ~/42/env_lib/conf_file/zshrc ~/.zshrc
+	cp ~/42/config_workspace/conf_file/zshrc ~/.zshrc
 	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] conf_file/vimrc$(BLANK)"
-	cp ~/42/env_lib/conf_file/vimrc ~/.vimrc
+	cp ~/42/config_workspace/conf_file/vimrc ~/.vimrc
 
 #LOAD MAKEFILE FROM ~/42/ TO CURRENT FOLDER
 load-makefile:
