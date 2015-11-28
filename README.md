@@ -86,4 +86,5 @@
 - 27 nov. 2015
 	- Add libft.h with all declaration
 	- Add test file main.c for this uploaded functions ->
-	- Add bzero, islower, isupper, memset, putchar, putchar_fd, putnbr, putnbr_fd, putstr, putstr_fd, strcmp, strlen, tolower, toupper
+	- Add bzero, islower, isupper, memset, putchar, putchar_fd, putnbr, putnbr_fd, putstr, putstr_fd, strcmp, strlen, tolower, toupper, memcpy,memccpy, isalpha
+	- Add color and "press enter mode" to test file main.c
