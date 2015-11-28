@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include "libft.h"
 
 #define RED		"\x1B[31m"
@@ -12,10 +13,19 @@
 int		test_run(void);
 void	test_display_result(char *s, int nb_err);
 void	test_display_title(char *s);
+void	test_pressenter();
+
+int		test_isalpha(void);
+int		test_isalpha_(int c);
+
 int		test_strlen(void);
 int		test_strlen_(char *str);
 int		test_putchar_putstr_putnbr(void);
+
 int		test_toupper_tolower(void);
+int		test_toupper_(int c);
+int		test_tolower_(int c);
+
 int		test_memset(void);
 int		test_memset_(void *s, int c, size_t n);
 int		test_bzero(void);
@@ -24,7 +34,6 @@ int		test_memcpy(void);
 int		test_memcpy_(void *dest, const void *src, size_t n);
 int		test_memccpy(void);
 int		test_memccpy_(void *dest, const void *src, int c, size_t n);
-void	test_pressenter();
 
 
 int		mode = 0;
@@ -56,12 +65,14 @@ int		test_run(void)
 	nb_err = 0;
 
 	// STRLEN
-	nb_err = test_strlen();
-	nb_err_total = (nb_err_total + nb_err);
-	nb_err = 0;
+	nb_err_total = (nb_err_total + test_strlen());
 	// TOUPPER & TOLOWER
 	nb_err_total = (nb_err_total + test_toupper_tolower());
 
+	/****************************
+	 * 		IS ???				*
+	 ****************************/
+	nb_err_total = (nb_err_total + test_isalpha());
 
 	/****************************
 	 * 		MEM FUNCTION		*
@@ -180,50 +191,93 @@ int		test_putchar_putstr_putnbr(void)
 	return (0);
 }
 
+
+int		test_isalpha(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	// ISALPHA
+	test_display_title("FT_ISALPHA");
+	nb_err = (nb_err + test_isalpha_('a'));
+	nb_err = (nb_err + test_isalpha_('+'));
+	nb_err = (nb_err + test_isalpha_('7'));
+	nb_err = (nb_err + test_isalpha_('z'));
+	test_display_result("FT_ISALPHA", nb_err);
+
+	return (nb_err);
+}
+
+int		test_isalpha_(int c)
+{
+	if ((isalpha(c) - ft_isalpha(c)) == 0)
+	{
+		printf("%s ft_isalpha(%c) [ %d ]\n", OK, c, ft_isalpha(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_isalpha(%c) [ %d ]\n", FAIL, c, ft_isalpha(c));
+		return (1);
+	}
+}
+
 int		test_toupper_tolower(void)
 {
 	int		nb_err;
 	int		nb_err_total;
-	char	*color;
 
 	nb_err = 0;
 	nb_err_total = 0;
 
 	// TOUPPER
 	test_display_title("FT_TOUPPER");
-	color = ( ('A' - ft_toupper('A')) == 0) ? OK : FAIL ;
-	nb_err = ( ('A' - ft_toupper('A')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ A ]\t [ %c ]\n", color, ft_toupper('A'));
-	color = ( ('Z' - ft_toupper('z')) == 0) ? OK : FAIL ;
-	nb_err = ( ('Z' - ft_toupper('z')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ z ]\t [ %c ]\n", color, ft_toupper('z'));
-	color = ( ('K' - ft_toupper('k')) == 0) ? OK : FAIL ;
-	nb_err = ( ('K' - ft_toupper('k')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ k ]\t [ %c ]\n", color, ft_toupper('k'));
-	color = ( ('-' - ft_toupper('-')) == 0) ? OK : FAIL ;
-	nb_err = ( ('-' - ft_toupper('-')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ - ]\t [ %c ]\n", color, ft_toupper('-'));
+	nb_err = (nb_err + test_toupper_('a'));
+	nb_err = (nb_err + test_toupper_('Q'));
+	nb_err = (nb_err + test_toupper_('7'));
+	nb_err = (nb_err + test_toupper_('z'));
 	test_display_result("FT_TOUPPER", nb_err);
 
 	// TOLOWER
 	nb_err_total = nb_err; nb_err = 0;
 	test_display_title("FT_TOLOWER");
-	color = ( ('a' - ft_tolower('a')) == 0) ? OK : FAIL ;
-	nb_err = ( ('a' - ft_tolower('a')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ a ]\t [ %c ]\n", color, ft_tolower('a'));
-	color = ( ('z' - ft_tolower('Z')) == 0) ? OK : FAIL ;
-	nb_err = ( ('z' - ft_tolower('Z')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ Z ]\t [ %c ]\n", color, ft_tolower('Z'));
-	color = ( ('k' - ft_tolower('K')) == 0) ? OK : FAIL ;
-	nb_err = ( ('k' - ft_tolower('K')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ K ]\t [ %c ]\n", color, ft_tolower('K'));
-	color = ( ('-' - ft_tolower('-')) == 0) ? OK : FAIL ;
-	nb_err = ( ('-' - ft_tolower('-')) == 0) ? nb_err : (nb_err + 1) ;
-	printf("%s[ - ]\t [ %c ]\n", color, ft_tolower('-'));
+	nb_err = (nb_err + test_tolower_('Q'));
+	nb_err = (nb_err + test_tolower_('a'));
+	nb_err = (nb_err + test_tolower_('0'));
+	nb_err = (nb_err + test_tolower_('L'));
 	test_display_result("FT_TOLOWER", nb_err);
 	nb_err_total = (nb_err_total + nb_err);
 
 	return (nb_err_total);
+}
+
+int		test_toupper_(int c)
+{
+	if ((toupper(c) - ft_toupper(c)) == 0)
+	{
+		printf("%s ft_toupper(%c) [ %c ]\n", OK, c, ft_toupper(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_toupper(%c) [ %c ]\n", FAIL, c, ft_toupper(c));
+		return (1);
+	}
+}
+
+int		test_tolower_(int c)
+{
+	if ((tolower(c) - ft_tolower(c)) == 0)
+	{
+		printf("%s ft_tolower(%c) [ %c ]\n", OK, c, ft_tolower(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_tolower(%c) [ %c ]\n", FAIL, c, ft_tolower(c));
+		return (1);
+	}
 }
 
 int		test_memset(void)

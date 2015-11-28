@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/11/28 13:43:45 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/11/28 14:18:24 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include <unistd.h>
 # include <string.h>
 
-typedef struct			s_list
+typedef struct		s_list
 {
-		void			*content;
-		size_t			content_size;
-		struct s_list	*next;
-}						t_list;
+	void			*content;
+	size_t			content_size;
+	struct s_list	*next;
+}					t_list;
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
@@ -47,7 +47,7 @@ char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 
-char 	*ft_itoa(int n);
+char	*ft_itoa(int n);
 int		ft_atoi(const char *nptr);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
