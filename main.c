@@ -24,11 +24,27 @@ int		test_memcpy(void);
 int		test_memcpy_(void *dest, const void *src, size_t n);
 int		test_memccpy(void);
 int		test_memccpy_(void *dest, const void *src, int c, size_t n);
+void	test_pressenter();
 
-int		main(void)
+
+int		mode = 0;
+
+int		main(int argc, char **argv)
 {
+	if (argc > 1 && strcmp(argv[1], "pause") == 0)
+		mode = 1;
 	test_run();
 	return (0);
+}
+
+void	test_pressenter(void)
+{
+	if (mode == 1)
+	{
+		printf("\n\n\t- Press [enter] to continue...");
+		char enter = 0;
+		while (enter != '\r' && enter != '\n') { enter = getchar(); }
+	}
 }
 
 int		test_run(void)
@@ -71,13 +87,15 @@ int		test_run(void)
 
 void	test_display_title(char *s)
 {
-	printf("%s------[%s]------%s\n", YELLOW, s, WHITE);
+	printf("%s%s%s\n", BLUE, s, WHITE);
+	printf("%s***************************%s\n", YELLOW, WHITE);
 }
 
 void	test_display_result(char *s, int nb_err)
 {
 	char *color;
 
+	printf("%s***************************%s\n", YELLOW, WHITE);
 	if (nb_err == -1)
 		printf("%s[%s] - ?? erreur(s) (verif manuel)%s", BLUE, s, WHITE);
 	else
@@ -85,6 +103,7 @@ void	test_display_result(char *s, int nb_err)
 		color = (nb_err == 0) ? GREEN : RED ;
 		printf("%s[%s] - %i erreur(s)%s", color, s, nb_err, WHITE);
 	}
+	test_pressenter();
 	printf("\n\n\n");
 }
 
@@ -99,7 +118,7 @@ int		test_strlen(void)
 	nb_err = (nb_err + test_strlen_("	ojjohj 	jhi ojh	ihiz zeiflh ziefh z fzihfoizh	 zifhzifh zihzeif 	ioh zfih ze 	oih zihf z zoifh 	 onceih izhf zifdh 	 izohfoizh fzihf 	oih fi zifh zifh zoifh zidh 	ioh zoifh ziohf zoi zofhzoihfezoi h	ih oizhfoizhfoizh foizhfoh	 zoiuehf zoihf oizh 	oi zoifhzoifh ifh zfih zoifeh zoifh 	i hizfh oizefh i 	i zoiefh zohf ziohf zoih	ih zihf oizhf 	oihf ih"));
 	nb_err = (nb_err + test_strlen_(" "));
 	nb_err = (nb_err + test_strlen_(""));
-	test_display_result("ft_strlen", nb_err);
+	test_display_result("FT_STRLEN", nb_err);
 	
 	return(nb_err);
 }
@@ -388,9 +407,9 @@ int		test_memccpy_(void *dest, const void *src, int c, size_t n)
 	printf("->(\"%s\", \"%s\", '%c', %zu);\n", dest_1, src_1, c, n);
 	ret_1 = memccpy(dest_1, src_1, c, n);
 	ret_2 = ft_memccpy(dest_2, src_1, c, n);
-	printf(" [...memcpy]\t%s\n", dest_1);
+	printf(" [...memccpy]\t%s\n", dest_1);
 	printf(" [...return]\t%s\n", ret_1);
-	printf(" [ft_memcpy]\t%s\n", dest_2);
+	printf(" [ft_memccpy]\t%s\n", dest_2);
 	printf(" [ft_return]\t%s\n", ret_2);
 	compare = memcmp(dest_1, dest_2, str_len);
 	if (ret_1 && ret_2)
