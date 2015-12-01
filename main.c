@@ -36,6 +36,8 @@ int		test_memccpy(void);
 int		test_memccpy_(void *dest, const void *src, int c, size_t n);
 int		test_memmove(void);
 int		test_memmove_(void *dest, const void *src, size_t n);
+int		test_memchr(void);
+int		test_memchr_(const void *s, int c, size_t n);
 
 
 int		mode = 0;
@@ -89,6 +91,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_memccpy());
 	// MEMMOVE
 	nb_err_total = (nb_err_total + test_memmove());
+	// MEMCHR
+	nb_err_total = (nb_err_total + test_memchr());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -535,4 +539,51 @@ int		test_memmove_(void *dest, const void *src, size_t n)
 	}
 	return (nb_err);
 
+}
+
+int		test_memchr(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_MEMCHR");
+	
+	nb_err = (nb_err + test_memchr_("TEST STRING 1 BLABLA", 'T', 10));
+	nb_err = (nb_err + test_memchr_("TEST STRING 1 BLABLA", 'E', 10));
+	nb_err = (nb_err + test_memchr_("TEST STRING 1 BLABLA", 'S', 10));
+	nb_err = (nb_err + test_memchr_("TEST STRING 1 BLABLA", 't', 10));
+	nb_err = (nb_err + test_memchr_("TEST STRING 1 BLABLA", ' ', 3));
+
+	test_display_result("FT_MEMCHR", nb_err);
+	return (nb_err);
+}
+
+
+int		test_memchr_(const void *s, int c, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	char	*src_1;
+	char	*ret_1;
+	char	*ret_2;
+
+
+	nb_err = 0;
+	compare = 0;
+	src_1 = strdup(s);
+	printf("->(\"%s\", \"%c\", %zu);\n", src_1, c, n);
+	ret_1 = memchr(src_1, c, n);
+	ret_2 = ft_memchr(src_1, c, n);
+	printf(" [...memmove return]\t%s\n", ret_1);
+	printf(" [ft_memmove return]\t%s\n", ret_2);
+	if (ret_1 && ret_2)
+		compare = memcmp(ret_1, ret_2, strlen(ret_1));
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
 }
