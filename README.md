@@ -14,8 +14,8 @@
 [x] memchr
 [x] memcmp
 [x] strlen
-[ ] strdup
-[ ] strcpy
+[x] strdup
+[x] strcpy
 [ ] strncpy
 [ ] strcat
 [ ] strncat
