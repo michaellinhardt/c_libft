@@ -38,6 +38,8 @@ int		test_memmove(void);
 int		test_memmove_(void *dest, const void *src, size_t n);
 int		test_memchr(void);
 int		test_memchr_(const void *s, int c, size_t n);
+int		test_memcmp(void);
+int		test_memcmp_(const void *dest, const void *src, size_t n);
 
 
 int		mode = 0;
@@ -93,6 +95,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_memmove());
 	// MEMCHR
 	nb_err_total = (nb_err_total + test_memchr());
+	// MEMCMP
+	nb_err_total = (nb_err_total + test_memcmp());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -587,3 +591,47 @@ int		test_memchr_(const void *s, int c, size_t n)
 	}
 	return (nb_err);
 }
+
+int		test_memcmp(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_MEMCMP");
+	
+	nb_err = (nb_err + test_memcmp_("Test,sTRING 1 BLABLA", "Test.string 1 bloblo", 5));
+	nb_err = (nb_err + test_memcmp_("TEST STRING 1 BLABLA", "Test.string 1 bloblo", 25));
+	nb_err = (nb_err + test_memcmp_("Test.string 1", "Test.string 1 bloblo", 6));
+
+	test_display_result("FT_MEMCMP", nb_err);
+	return (nb_err);
+}
+
+
+int		test_memcmp_(const void *s1, const void *s2, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	int		ret_1;
+	int		ret_2;
+
+	nb_err = 0;
+
+	printf("->(\"%s\", \"%s\", %zu);\n", s1, s2, n);
+	ret_1 = memcmp(s1, s2, n);
+	ret_2 = ft_memcmp(s1, s2, n);
+	printf(" [...memcmp]\t%d\n", ret_1);
+	printf(" [ft_memcmp]\t%d\n", ret_2);
+	compare = (ret_1 - ret_2);
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+
+}
+
+

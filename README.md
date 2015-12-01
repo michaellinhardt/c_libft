@@ -12,7 +12,7 @@
 [x] memccpy
 [x] memmove
 [x] memchr
-[ ] memcmp
+[x] memcmp
 [x] strlen
 [ ] strdup
 [ ] strcpy
