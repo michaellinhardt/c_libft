@@ -101,7 +101,7 @@ ifeq ($(PATH_PROJET),0)
 endif
 
 #PUSH TO BOTH GIT42 AND GItHUB
-push: -is-project-folder -push-var-verif push-git42 push-github
+push: -is-project-folder -push-var-verif push-git42 push-github status
 
 #PUSH TO GITHUB
 push-github: -is-project-folder -push-var-verif
