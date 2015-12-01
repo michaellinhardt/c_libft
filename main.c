@@ -34,6 +34,8 @@ int		test_memcpy(void);
 int		test_memcpy_(void *dest, const void *src, size_t n);
 int		test_memccpy(void);
 int		test_memccpy_(void *dest, const void *src, int c, size_t n);
+int		test_memmove(void);
+int		test_memmove_(void *dest, const void *src, size_t n);
 
 
 int		mode = 0;
@@ -85,6 +87,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_memcpy());
 	// MEMCCPY
 	nb_err_total = (nb_err_total + test_memccpy());
+	// MEMMOVE
+	nb_err_total = (nb_err_total + test_memmove());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -421,8 +425,6 @@ int		test_memcpy_(void *dest, const void *src, size_t n)
 }
 
 
-
-
 int		test_memccpy(void)
 {
 	int		nb_err;
@@ -464,6 +466,62 @@ int		test_memccpy_(void *dest, const void *src, int c, size_t n)
 	printf(" [...memccpy]\t%s\n", dest_1);
 	printf(" [...return]\t%s\n", ret_1);
 	printf(" [ft_memccpy]\t%s\n", dest_2);
+	printf(" [ft_return]\t%s\n", ret_2);
+	compare = memcmp(dest_1, dest_2, str_len);
+	if (ret_1 && ret_2)
+		compare = (compare + memcmp(ret_1, ret_2, str_len));
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+
+}
+
+int		test_memmove(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_MEMMOVE");
+	
+	nb_err = (nb_err + test_memmove_("TEST STRING 1 BLABLA", "Test.string 1 bloblo", 3));
+	nb_err = (nb_err + test_memmove_("TEST STRING 1 BLABLA", "Test.string 1 bloblo", 25));
+	nb_err = (nb_err + test_memmove_("TEST STRING 1 BLABLA", "Test.string 1 bloblo", 25));
+	nb_err = (nb_err + test_memmove_("TEST", "Test.string 1 bloblo", 6));
+
+	test_display_result("FT_MEMMOVE", nb_err);
+	return (nb_err);
+}
+
+
+int		test_memmove_(void *dest, const void *src, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	int		str_len;
+	char	*dest_1;
+	char	*dest_2;
+	char	*src_1;
+	char	*ret_1;
+	char	*ret_2;
+
+
+	nb_err = 0;
+
+	dest_1 = strdup(dest);	
+	dest_2 = strdup(dest);	
+	src_1 = strdup(src);
+	str_len = ( n > strlen(dest_1)) ? n : strlen(dest_1);
+	printf("->(\"%s\", \"%s\", %zu);\n", dest_1, src_1, n);
+	ret_1 = memmove(dest_1, src_1, n);
+	ret_2 = ft_memmove(dest_2, src_1, n);
+	printf(" [...memmove]\t%s\n", dest_1);
+	printf(" [...return]\t%s\n", ret_1);
+	printf(" [ft_memmove]\t%s\n", dest_2);
 	printf(" [ft_return]\t%s\n", ret_2);
 	compare = memcmp(dest_1, dest_2, str_len);
 	if (ret_1 && ret_2)
