@@ -43,6 +43,8 @@ int		test_memcmp_(const void *dest, const void *src, size_t n);
 
 int		test_strcpy(void);
 int		test_strcpy_(char *dest, const char *src);
+int		test_strdup(void);
+int		test_strdup_(const char *s1);
 
 
 int		mode = 0;
@@ -103,6 +105,8 @@ int		test_run(void)
 
 	// STRCPY
 	nb_err_total = (nb_err_total + test_strcpy());
+	// STRDUP
+	nb_err_total = (nb_err_total + test_strdup());
 
 
 	// PUTCHAR & PUTCHAR_FD
@@ -680,6 +684,50 @@ int		test_strcpy_(char *dest, const char *src)
 	ft_strcpy(dest_2, src_1);
 	printf(" [...strcpy]\t%s\n", dest_1);
 	printf(" [ft_strcpy]\t%s\n", dest_2);
+	compare = memcmp(dest_1, dest_2, str_len);
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
+int		test_strdup(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_STRDUP");
+	
+	nb_err = (nb_err + test_strdup_("TEST STRING 1 BLABLA"));
+	nb_err = (nb_err + test_strdup_("Ceci est un test lalal"));
+	nb_err = (nb_err + test_strdup_(""));
+
+	test_display_result("FT_STRDUP", nb_err);
+	return (nb_err);
+}
+
+
+int		test_strdup_(const char *s1)
+{
+	int		nb_err;
+	int		compare;
+	int		str_len;
+	char	*dest_1;
+	char	*dest_2;
+
+
+	nb_err = 0;
+
+	dest_1 = strdup(s1);	
+	dest_2 = ft_strdup(s1);	
+	str_len = strlen(dest_1);
+	printf("->(\"%s\");\n", s1);
+	printf(" [...strdup]\t%s\n", dest_1);
+	printf(" [ft_strdup]\t%s\n", dest_2);
 	compare = memcmp(dest_1, dest_2, str_len);
 	if (compare == 0)
 		printf("%s memcmp = %d \n", OK, compare);

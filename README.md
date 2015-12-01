@@ -75,6 +75,7 @@
 [x] islower
 [x] isupper
 [ ] isspace
+[x] stralloc
 
 [ ] header define color 
 
