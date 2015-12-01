@@ -4,10 +4,10 @@ VERSION 		= v0.9
 PATH_ROOT		= ~/42/
 PATH_CURR		= $(shell pwd)
 ifneq ($(wildcard $(PATH_CURR)/.path_root), )
-	PATH_PROJET = .
+	PATH_PROJET = $(PATH_CURR)
 else
 ifneq ($(wildcard $(PATH_CURR)/../.path_root), )
-	PATH_PROJET = ..
+	PATH_PROJET = $(PATH_CURR)/..
 else
 	PATH_PROJET = 0
 endif
@@ -82,21 +82,65 @@ test: clear re
 	./a.out
 
 # display status for both git42 and github in the current project
-status: -is-project-folder
-ifeq ($(wildcard $(PATH_PROJET)/42/.git), )
-	@echo "$(RED)*$(YELLOW) $(PATH_PROJET)/42/ is not a git repository.$(BLANK)"
+status: -is-project-folder save-dev
+ifeq ($(wildcard $(PATH_PROJET)/git42/.git), )
+	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/git42/ is not a git repository.$(BLANK)"
 else
-	@cd $(PATH_PROJET)/42 && echo "$(GREEN)* $(YELLOW)$(PATH_PROJET)/42/ git status $(BLANK)" && git status -s
+	@cd $(PATH_PROJET)/git42 && echo "$(OK) $(YELLOW)$(PATH_PROJET)/git42/ git status $(BLANK)" && git status -s
 endif
 ifeq ($(wildcard $(PATH_PROJET)/github/.git), )
-	@echo "$(RED)*$(YELLOW) $(PATH_PROJET)/github/ is not a git repository.$(BLANK)"
+	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/github/ is not a git repository.$(BLANK)"
 else
-	@cd $(PATH_PROJET)/github && echo "$(GREEN)* $(YELLOW)$(PATH_PROJET)/github/ git status$(BLANK)" && git status -s
+	@cd $(PATH_PROJET)/github && echo "$(OK) $(YELLOW)$(PATH_PROJET)/github/ git status$(BLANK)" && git status -s
 endif
+
+#VERIF IS THE CURRENT VAR PATH_PROJET RETURN TO A PROJECT FOLDER
 -is-project-folder:
 ifeq ($(PATH_PROJET),0)
 	$(error Cant find .path_root file to define folder project)
 endif
+
+#PUSH TO BOTH GIT42 AND GItHUB
+push: -is-project-folder -push-var-verif
+ifeq ($(wildcard $(PATH_PROJET)/git42/.git), )
+	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/git42/ is not a git repository.$(BLANK)"
+else
+	@echo "$(OK)$(YELLOW) $(PATH_PROJET)/git42/ push$(BLANK)"
+	@cd $(PATH_PROJET)/git42 && git add $(ADD) && git commit -m "$(COMMIT)" && git push
+endif
+ifeq ($(wildcard $(PATH_PROJET)/github/.git), )
+	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/github/ is not a git repository.$(BLANK)"
+else
+	@echo "$(OK)$(YELLOW) $(PATH_PROJET)/github/ push$(BLANK)"
+	@cd $(PATH_PROJET)/github && git add $(ADD) && git commit -m "$(COMMIT)" && git push
+endif
+
+#VERIF IF CORRECT VAR ARE GIVIN TO THE PUSH RULE
+-push-var-verif:
+ifeq ($(ADD), )
+	$(error Syntaxe ex: push ADD="main.c" COMMIT="commit message")
+endif
+ifeq ($(COMMIT), )
+	$(error Syntaxe ex: push ADD="main.c" COMMIT="commit message")
+endif
+
+#SAVE CONTENT OF DEV FOLDER TO GIT42 AND GITHUB FOLDER
+save-dev: -is-project-folder
+	@echo "$(OK)$(YELLOW) Reseting swap folder..$(BLANK)"
+	@rm -rf $(PATH_PROJET)/swap
+	@mkdir -p $(PATH_PROJET)/swap
+	@echo "$(OK)$(YELLOW) Clear git42 folder..$(BLANK)"
+	@touch $(PATH_PROJET)/git42/prevent_mv_bug
+	@mv $(PATH_PROJET)/git42/* $(PATH_PROJET)/swap/
+	@rm -rf $(PATH_PROJET)/swap
+	@mkdir -p $(PATH_PROJET)/swap
+	@echo "$(OK)$(YELLOW) Clear github folder..$(BLANK)"
+	@touch $(PATH_PROJET)/github/prevent_mv_bug
+	@mv $(PATH_PROJET)/github/* $(PATH_PROJET)/swap/
+	@rm -rf $(PATH_PROJET)/swap
+	@echo "$(OK)$(YELLOW) Copy dev folder to both git42 and github..$(BLANK)"
+	@cp -r $(PATH_PROJET)/dev/* $(PATH_PROJET)/git42/
+	@cp -r $(PATH_PROJET)/dev/* $(PATH_PROJET)/github/
 
 #DOCS
 help:
@@ -127,30 +171,4 @@ load-workspace:
 	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] conf_file/vimrc$(BLANK)"
 	cp ~/42/config_workspace/conf_file/vimrc ~/.vimrc
 
-#PUSH TO BOTH GIT42 AND GItHUB
-push: -is-project-folder -push-var-verif
-ifeq ($(wildcard $(PATH_PROJET)/42/.git), )
-	@echo "$(RED)*$(YELLOW) $(PATH_PROJET)/42/ is not a git repository.$(BLANK)"
-else
-	@echo "$(GREEN)*$(YELLOW) $(PATH_PROJET)/42/"
-	cd $(PATH_PROJET)/42
-	git add $(ADD)
-	git commit -m "$(COMMIT)"
-	git push
-endif
-ifeq ($(wildcard $(PATH_PROJET)/github/.git), )
-	@echo "$(RED)*$(YELLOW) $(PATH_PROJET)/github/ is not a git repository.$(BLANK)"
-else
-	@echo "$(GREEN)*$(YELLOW) $(PATH_PROJET)/github/"
-	cd ../github
-	git add $(ADD)
-	git commit -m "$(COMMIT)"
-	git push
-endif
--push-var-verif:
-ifeq ($(ADD), )
-	$(error Syntaxe ex: push ADD="main.c" COMMIT="commit message")
-endif
-ifeq ($(COMMIT), )
-	$(error Syntaxe ex: push ADD="main.c" COMMIT="commit message")
-endif
+
