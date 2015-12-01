@@ -82,7 +82,8 @@ test: clear re
 	./a.out
 
 # display status for both git42 and github in the current project
-status: -is-project-folder save-dev
+status: -is-project-folder save-dev -status
+-status:
 ifeq ($(wildcard $(PATH_PROJET)/git42/.git), )
 	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/git42/ is not a git repository.$(BLANK)"
 else
@@ -101,7 +102,7 @@ ifeq ($(PATH_PROJET),0)
 endif
 
 #PUSH TO BOTH GIT42 AND GItHUB
-push: -is-project-folder -push-var-verif push-git42 push-github status
+push: -is-project-folder -push-var-verif push-git42 push-github -status
 
 #PUSH TO GITHUB
 push-github: -is-project-folder -push-var-verif
