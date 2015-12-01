@@ -101,18 +101,24 @@ ifeq ($(PATH_PROJET),0)
 endif
 
 #PUSH TO BOTH GIT42 AND GItHUB
-push: -is-project-folder -push-var-verif
-ifeq ($(wildcard $(PATH_PROJET)/git42/.git), )
-	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/git42/ is not a git repository.$(BLANK)"
-else
-	@echo "$(OK)$(YELLOW) $(PATH_PROJET)/git42/ push$(BLANK)"
-	@cd $(PATH_PROJET)/git42 && git add $(ADD) && git commit -m "$(COMMIT)" && git push
-endif
+push: -is-project-folder -push-var-verif push-git42 push-github
+
+#PUSH TO GITHUB
+push-github: -is-project-folder -push-var-verif
 ifeq ($(wildcard $(PATH_PROJET)/github/.git), )
 	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/github/ is not a git repository.$(BLANK)"
 else
 	@echo "$(OK)$(YELLOW) $(PATH_PROJET)/github/ push$(BLANK)"
 	@cd $(PATH_PROJET)/github && git add $(ADD) && git commit -m "$(COMMIT)" && git push
+endif
+
+#PUSH TO GIT42
+push-git42: -is-project-folder -push-var-verif
+ifeq ($(wildcard $(PATH_PROJET)/git42/.git), )
+	@echo "$(FAIL)$(YELLOW) $(PATH_PROJET)/git42/ is not a git repository.$(BLANK)"
+else
+	@echo "$(OK)$(YELLOW) $(PATH_PROJET)/git42/ push$(BLANK)"
+	@cd $(PATH_PROJET)/git42 && git add $(ADD) && git commit -m "$(COMMIT)" && git push
 endif
 
 #VERIF IF CORRECT VAR ARE GIVIN TO THE PUSH RULE
