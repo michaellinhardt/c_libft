@@ -57,6 +57,8 @@ int		test_strchr(void);
 int		test_strchr_(const char *s, int c);
 int		test_strrchr(void);
 int		test_strrchr_(const char *s, int c);
+int		test_strstr(void);
+int		test_strstr_(const char *s1, const char *s2);
 
 
 int		mode = 0;
@@ -131,6 +133,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_strchr());
 	// STRRCHR
 	nb_err_total = (nb_err_total + test_strrchr());
+	// STRRCHR
+	nb_err_total = (nb_err_total + test_strstr());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -1068,5 +1072,52 @@ int		test_strdup_(const char *s1)
 		nb_err = 1;
 	}
 	return (nb_err);
+}
+
+int		test_strstr(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_STRSTR");
+	
+	nb_err = (nb_err + test_strstr_("Chaine de blatest blabla0", "blabla0"));
+	nb_err = (nb_err + test_strstr_("Chaine de Chaine dtest blabla", "Chaine d"));
+	nb_err = (nb_err + test_strstr_("123 44568 44567 4567", "4567"));
+	nb_err = (nb_err + test_strstr_("123 44568 44567 4567", "qqq"));
+
+	test_display_result("FT_STRSTR", nb_err);
+	return (nb_err);
+}
+
+
+int		test_strstr_(const char *s1, const char *s2)
+{
+	int		nb_err;
+	int		compare;
+	char	*ret_1;
+	char	*ret_2;
+
+	nb_err = 0;
+	printf("->(\"%s\", \"%s\");\n", s1, s2);
+	ret_1 = strstr(s1, s2);
+	ret_2 = ft_strstr(s1, s2);
+	printf(" [...strstr]\t%s\n", ret_1);
+	printf(" [ft_strstr]\t%s\n", ret_2);
+	if (ret_1 && ret_2)
+		compare = strcmp(ret_1, ret_2);
+	else if (!ret_1 && !ret_2)
+		compare = 0;
+	else
+		compare = 1;
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+
 }
 
