@@ -83,8 +83,7 @@ vardump:
 test: clear re
 	rm -f a.out
 	mkdir -p lib
-	cp ./libft.a ./lib/libft.a
-	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L$(FOLDER_LIB) main.c -lft
+	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L./ main.c -lft
 	./a.out
 
 # display status for both git42 and github in the current project

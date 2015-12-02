@@ -1,5 +1,4 @@
-obj/
 libft.a
-.o
-.a
+*.o
+*.a
 a.out
