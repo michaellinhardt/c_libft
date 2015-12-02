@@ -55,6 +55,8 @@ int		test_strlcat(void);
 int		test_strlcat_(char *dest, const char *src, size_t n);
 int		test_strchr(void);
 int		test_strchr_(const char *s, int c);
+int		test_strrchr(void);
+int		test_strrchr_(const char *s, int c);
 
 
 int		mode = 0;
@@ -127,6 +129,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_strlcat());
 	// STRCHR
 	nb_err_total = (nb_err_total + test_strchr());
+	// STRRCHR
+	nb_err_total = (nb_err_total + test_strrchr());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -930,10 +934,9 @@ int		test_strchr(void)
 	nb_err = (nb_err + test_strchr_("123456789", '3'));
 	nb_err = (nb_err + test_strchr_("123456789", 'a'));
 
-	test_display_result("FT_STRLCAT", nb_err);
+	test_display_result("FT_STRCHR", nb_err);
 	return (nb_err);
 }
-
 
 int		test_strchr_(const char *s, int n)
 {
@@ -953,6 +956,58 @@ int		test_strchr_(const char *s, int n)
 	ret_2 = ft_strchr(src_2, n);
 	printf(" [...strchr] \t%s\n", ret_1);
 	printf(" [ft_strchr] \t%s\n", ret_2);
+	if (!ret_1 && !ret_2)
+		compare = 0;
+	else if (!ret_1 || !ret_2)
+		compare = 1;
+	else
+		compare = strcmp(ret_1, ret_2);
+	if (compare == 0)
+		printf("%s strcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s strcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
+int		test_strrchr(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_STRRCHR");
+	
+	nb_err = (nb_err + test_strrchr_("102030405060708090", '0'));
+	nb_err = (nb_err + test_strrchr_("102030405060708090", '1'));
+	nb_err = (nb_err + test_strrchr_("010203040506070809", '0'));
+	nb_err = (nb_err + test_strrchr_("123456789", '3'));
+	nb_err = (nb_err + test_strrchr_("123456789", 'a'));
+
+	test_display_result("FT_STRRCHR", nb_err);
+	return (nb_err);
+}
+
+
+int		test_strrchr_(const char *s, int n)
+{
+	int		nb_err;
+	int		compare;
+	char	*src_1;
+	char	*src_2;
+	char	*ret_1;
+	char	*ret_2;
+
+	nb_err = 0;
+
+	src_1 = strdup(s);
+	src_2 = strdup(s);
+	printf("->(\"%s\", %c);\n", src_1, n);
+	ret_1 = strrchr(src_1, n);
+	ret_2 = ft_strrchr(src_2, n);
+	printf(" [...strrchr] \t%s\n", ret_1);
+	printf(" [ft_strrchr] \t%s\n", ret_2);
 	if (!ret_1 && !ret_2)
 		compare = 0;
 	else if (!ret_1 || !ret_2)

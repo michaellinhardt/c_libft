@@ -21,7 +21,7 @@
 [x] strncat
 [x] strlcat
 [x] strchr
-[ ] strrchr
+[x] strrchr
 [ ] strstr
 [ ] strnstr
 [x] strcmp
