@@ -140,8 +140,8 @@ int		test_run(void)
 	// STRSTR
 	nb_err_total = (nb_err_total + test_strstr());
 	// STRNSTR
-	nb_err_total = (nb_err_total + test_strncmp());
-	// STRNSTR
+	nb_err_total = (nb_err_total + test_strnstr());
+	// STRNCMP
 	nb_err_total = (nb_err_total + test_strncmp());
 
 	// PUTCHAR & PUTCHAR_FD
@@ -1206,15 +1206,15 @@ int		test_strncmp_(const char *s1, const char *s2, size_t n)
 {
 	int		nb_err;
 	int		compare;
-	size_t	ret_1;
-	size_t	ret_2;
+	int		ret_1;
+	int		ret_2;
 
 	nb_err = 0;
 	printf("->(\"%s\", \"%s\", %zu);\n", s1, s2, n);
 	ret_1 = strncmp(s1, s2, n);
 	ret_2 = ft_strncmp(s1, s2, n);
-	printf(" [...strncmp]\t%zu\n", ret_1);
-	printf(" [ft_strncmp]\t%zu\n", ret_2);
+	printf(" [...strncmp]\t%d\n", ret_1);
+	printf(" [ft_strncmp]\t%d\n", ret_2);
 	compare = ret_1 - ret_2;
 	if (compare == 0)
 		printf("%s memcmp = %d \n", OK, compare);
