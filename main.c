@@ -51,6 +51,8 @@ int		test_strcat(void);
 int		test_strcat_(char *s1, const char *s2);
 int		test_strncat(void);
 int		test_strncat_(char *s1, const char *s2, size_t n);
+int		test_strlcat(void);
+int		test_strlcat_(char *dest, const char *src, size_t n);
 
 
 int		mode = 0;
@@ -119,6 +121,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_strcat());
 	// STRNCAT
 	nb_err_total = (nb_err_total + test_strncat());
+	// STRLCAT
+	nb_err_total = (nb_err_total + test_strlcat());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -846,6 +850,60 @@ int		test_strncat_(char *s1, const char *s2, size_t n)
 	printf(" [...strncat]\t%s\n", dest_1);
 	printf(" [ft_strncat]\t%s\n", dest_2);
 	compare = memcmp(dest_1, dest_2, str_len);
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
+int		test_strlcat(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_STRLCAT");
+	
+	nb_err = (nb_err + test_strlcat_("123456789", "01234567890", 11));
+	nb_err = (nb_err + test_strlcat_("123456789", "01234567890", 8));
+	nb_err = (nb_err + test_strlcat_("123456789", "01234567890", 20));
+
+	test_display_result("FT_STRLCAT", nb_err);
+	return (nb_err);
+}
+
+
+int		test_strlcat_(char *dest, const char *src, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	int		str_len;
+	char	dest_1[100];
+	char	dest_2[100];
+	char	*src_1;
+	char	*src_2;
+	size_t	ret_1;
+	size_t	ret_2;
+
+	nb_err = 0;
+
+	memset(dest_1, 'a', 100);
+	memset(dest_2, 'a', 100);
+	strcpy(dest_1, dest);
+	strcpy(dest_2, dest);
+	src_1 = strdup(src);
+	src_2 = strdup(src);
+	str_len = 100;
+	printf("->(\"%s\", \"%s\", %zu);\n", dest_1, src_1, n);
+	ret_1 = strlcat(dest_1, src_1, n);
+	ret_2 = ft_strlcat(dest_2, src_2, n);
+	printf(" [...strlcat] [%zu]\t%s\n", ret_1, dest_1);
+	printf(" [ft_strlcat] [%zu]\t%s\n", ret_2, dest_2);
+	compare = memcmp(dest_1, dest_2, str_len);
+	compare = (compare + (ret_1 - ret_2));
 	if (compare == 0)
 		printf("%s memcmp = %d \n", OK, compare);
 	else
