@@ -46,22 +46,25 @@ LIST_SRC		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 
 #BUILD LIST
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
-SRCS			= $(addprefix $(FOLDER_SRC), $(LIST_SRC))
-OBJS			= $(addprefix $(FOLDER_OBJ), $(LIST_OBJ))
+#SRCS			= $(addprefix $(FOLDER_SRC), $(LIST_SRC))
+#OBJS			= $(addprefix $(FOLDER_OBJ), $(LIST_OBJ))
 
 all: $(NAME)
 
 #TRANSFORM .c FILE INTO .o
-$(FOLDER_OBJ)%.o: $(FOLDER_SRC)%.c
-	@mkdir -p $(FOLDER_OBJ)
-	$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
+#$(FOLDER_OBJ)%.o: $(FOLDER_SRC)%.c
+	#@mkdir -p $(FOLDER_OBJ)
+	#$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+%.o: %.c
+	$(CC) $(CFLAGS) -I./ -c -o $@ $<
+
+$(NAME): $(LIST_OBJ)
+	ar rc $(NAME) $(LIST_OBJ)
 	ranlib $(NAME)
 
 clean:
-	rm -rf $(FOLDER_OBJ)
+	rm -rf $(LIST_OBJ)
 
 fclean: clean
 	rm -f $(NAME)
