@@ -23,7 +23,7 @@
 [x] strchr
 [x] strrchr
 [x] strstr
-[ ] strnstr
+[x] strnstr
 [x] strcmp
 [ ] strncmp
 [ ] atoi
