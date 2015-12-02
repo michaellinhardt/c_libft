@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 14:09:12 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/02 15:54:29 by mlinhard         ###   ########.fr       */
+/*   Created: 2015/12/02 15:50:40 by mlinhard          #+#    #+#             */
+/*   Updated: 2015/12/02 16:29:00 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strcat(char *s1, const char *s2)
+char		*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	char	*ret;
 
@@ -21,6 +21,8 @@ char		*ft_strcat(char *s1, const char *s2)
 	ret = s1;
 	while (*s1)
 		s1++;
-	ft_strcpy(s1, s2);
+	while (n-- && *s2)
+		*s1++ = *s2++;
+	*s1 = '\0';
 	return (ret);
 }

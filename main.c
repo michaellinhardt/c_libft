@@ -49,6 +49,8 @@ int		test_strdup(void);
 int		test_strdup_(const char *s1);
 int		test_strcat(void);
 int		test_strcat_(char *s1, const char *s2);
+int		test_strncat(void);
+int		test_strncat_(char *s1, const char *s2, size_t n);
 
 
 int		mode = 0;
@@ -115,7 +117,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_strdup());
 	// STRCAT
 	nb_err_total = (nb_err_total + test_strcat());
-
+	// STRNCAT
+	nb_err_total = (nb_err_total + test_strncat());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -794,6 +797,54 @@ int		test_strcat_(char *s1, const char *s2)
 	ft_strcat(dest_2, src_1);
 	printf(" [...strcat]\t%s\n", dest_1);
 	printf(" [ft_strcat]\t%s\n", dest_2);
+	compare = memcmp(dest_1, dest_2, str_len);
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
+int		test_strncat(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_STRNCAT");
+	
+	nb_err = (nb_err + test_strncat_("Chaine 1", "-ajout 1", 3));
+	nb_err = (nb_err + test_strncat_("Chaine 2", "-add !!", 10));
+
+	test_display_result("FT_STRNCAT", nb_err);
+	return (nb_err);
+}
+
+
+int		test_strncat_(char *s1, const char *s2, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	int		str_len;
+	char	dest_1[100];
+	char	dest_2[100];
+	char	*src_1;
+
+	nb_err = 0;
+
+	memset(dest_1, 'a', 100);
+	memset(dest_2, 'a', 100);
+	strcpy(dest_1, s1);
+	strcpy(dest_2, s1);
+	src_1 = strdup(s2);
+	str_len = 100;
+	printf("->(\"%s\", \"%s\", %zu);\n", dest_1, src_1, n);
+	strncat(dest_1, src_1, n);
+	ft_strncat(dest_2, src_1, n);
+	printf(" [...strncat]\t%s\n", dest_1);
+	printf(" [ft_strncat]\t%s\n", dest_2);
 	compare = memcmp(dest_1, dest_2, str_len);
 	if (compare == 0)
 		printf("%s memcmp = %d \n", OK, compare);

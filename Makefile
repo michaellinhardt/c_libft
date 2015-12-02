@@ -36,7 +36,7 @@ FOLDER_LIB		= ./lib/
 NAME			= libft.a
 LIST_HEADER		= libft.h
 LIST_SRC		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
-				  ft_strcat.c \
+				  ft_strcat.c ft_strncat.c \
 				  ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c \
 				  ft_putnbr_fd.c ft_putnbr.c ft_stralloc.c \
 				  ft_islower.c ft_isupper.c ft_toupper.c ft_tolower.c \
@@ -82,8 +82,8 @@ vardump:
 
 test: clear re
 	rm -f a.out
-	mkdir -p lib
 	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L./ main.c -lft
+	rm -f *.o
 	./a.out
 
 # display status for both git42 and github in the current project
