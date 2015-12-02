@@ -20,7 +20,7 @@
 [x] strcat
 [x] strncat
 [x] strlcat
-[ ] strchr
+[x] strchr
 [ ] strrchr
 [ ] strstr
 [ ] strnstr
