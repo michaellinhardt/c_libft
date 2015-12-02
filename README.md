@@ -25,7 +25,7 @@
 [x] strstr
 [x] strnstr
 [x] strcmp
-[ ] strncmp
+[x] strncmp
 [ ] atoi
 [x] isalpha
 [ ] isdigit

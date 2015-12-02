@@ -61,6 +61,8 @@ int		test_strstr(void);
 int		test_strstr_(const char *s1, const char *s2);
 int		test_strnstr(void);
 int		test_strnstr_(const char *s1, const char *s2, size_t n);
+int		test_strncmp(void);
+int		test_strncmp_(const char *s1, const char *s2, size_t n);
 
 
 int		mode = 0;
@@ -138,7 +140,9 @@ int		test_run(void)
 	// STRSTR
 	nb_err_total = (nb_err_total + test_strstr());
 	// STRNSTR
-	nb_err_total = (nb_err_total + test_strnstr());
+	nb_err_total = (nb_err_total + test_strncmp());
+	// STRNSTR
+	nb_err_total = (nb_err_total + test_strncmp());
 
 	// PUTCHAR & PUTCHAR_FD
 	test_putchar_putstr_putnbr();
@@ -1131,7 +1135,7 @@ int		test_strnstr(void)
 
 	nb_err = 0;
 	test_display_title("FT_STRNSTR");
-	
+
 	nb_err = (nb_err + test_strnstr_("Chaine de blatest blabla0", "blabla0", 0));
 	nb_err = (nb_err + test_strnstr_("Chaine de blatest blabla0", "blabla0", 100));
 	nb_err = (nb_err + test_strnstr_("Chaine de Chaine dtesabla", "Chaine d", 20));
@@ -1164,6 +1168,54 @@ int		test_strnstr_(const char *s1, const char *s2, size_t n)
 		compare = 0;
 	else
 		compare = 1;
+	if (compare == 0)
+		printf("%s memcmp = %d \n", OK, compare);
+	else
+	{
+		printf("%s memcmp = %d\n", FAIL, compare);	
+		nb_err = 1;
+	}
+	return (nb_err);
+
+}
+
+int		test_strncmp(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_STRNCMP");
+
+	nb_err = (nb_err + test_strncmp_("1234567890", "1234567890", 0));
+	nb_err = (nb_err + test_strncmp_("1234567890", "1234567890", 10));
+	nb_err = (nb_err + test_strncmp_("1234567890", "1234567890", 11));
+	nb_err = (nb_err + test_strncmp_("1234567890", "1234567890", 5));
+	nb_err = (nb_err + test_strncmp_("01234567890", "1234567890", 5));
+	nb_err = (nb_err + test_strncmp_("1234567890", "10234567890", 5));
+	nb_err = (nb_err + test_strncmp_("q1234567890a", "a10234567890b", 1));
+	nb_err = (nb_err + test_strncmp_("1234567890a", "10234567890b", 11));
+	nb_err = (nb_err + test_strncmp_("1234567890", "1234", 5));
+	nb_err = (nb_err + test_strncmp_("1234", "1234567890", 5));
+
+	test_display_result("FT_STRNCMP", nb_err);
+	return (nb_err);
+}
+
+
+int		test_strncmp_(const char *s1, const char *s2, size_t n)
+{
+	int		nb_err;
+	int		compare;
+	size_t	ret_1;
+	size_t	ret_2;
+
+	nb_err = 0;
+	printf("->(\"%s\", \"%s\", %zu);\n", s1, s2, n);
+	ret_1 = strncmp(s1, s2, n);
+	ret_2 = ft_strncmp(s1, s2, n);
+	printf(" [...strncmp]\t%zu\n", ret_1);
+	printf(" [ft_strncmp]\t%zu\n", ret_2);
+	compare = ret_1 - ret_2;
 	if (compare == 0)
 		printf("%s memcmp = %d \n", OK, compare);
 	else
