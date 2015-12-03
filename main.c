@@ -26,6 +26,9 @@ int		test_isascii_(int c);
 int		test_isprint(void);
 int		test_isprint_(int c);
 
+int		test_atoi(void);
+int		test_atoi_(const char *str);
+
 int		test_strlen(void);
 int		test_strlen_(char *str);
 int		test_putchar_putstr_putnbr(void);
@@ -119,6 +122,9 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_isascii());
 	// ISPRINT
 	nb_err_total = (nb_err_total + test_isprint());
+
+	// ATOI
+	nb_err_total = (nb_err_total + test_atoi());
 
 	/****************************
 	 * 		MEM FUNCTION		*
@@ -265,6 +271,44 @@ int		test_putchar_putstr_putnbr(void)
 
 	return (0);
 }
+
+int		test_atoi(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	// ISPRINT
+	test_display_title("FT_ATOI");
+	nb_err = (nb_err + test_atoi_(" - a 22"));
+	nb_err = (nb_err + test_atoi_("	-	33e -3 "));
+	nb_err = (nb_err + test_atoi_("12894023"));
+	nb_err = (nb_err + test_atoi_("-30948"));
+	nb_err = (nb_err + test_atoi_("0+weg8"));
+	nb_err = (nb_err + test_atoi_("+55"));
+	nb_err = (nb_err + test_atoi_("-55 a"));
+	nb_err = (nb_err + test_atoi_(" + - 8"));
+	nb_err = (nb_err + test_atoi_("-+8"));
+	nb_err = (nb_err + test_atoi_("a22"));
+	test_display_result("FT_ATOI", nb_err);
+
+	return (nb_err);
+}
+
+int		test_atoi_(const char *c)
+{
+	if ((atoi(c) - ft_atoi(c)) == 0)
+	{
+		printf("%s ft_atoi(%s) [ %d ]\n", OK, c, ft_atoi(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_atoi(%s) [ %d ]\n", FAIL, c, ft_atoi(c));
+		return (1);
+	}
+}
+
 
 int		test_isprint(void)
 {

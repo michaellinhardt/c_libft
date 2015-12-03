@@ -26,7 +26,7 @@
 [x] strnstr
 [x] strcmp
 [x] strncmp
-[ ] atoi
+[x] atoi
 [x] isalpha
 [x] isdigit
 [x] isalnum
@@ -74,7 +74,7 @@
 ### personnal add
 [x] islower
 [x] isupper
-[ ] isspace
+[x] isspace
 [x] stralloc
 
 [ ] header define color 

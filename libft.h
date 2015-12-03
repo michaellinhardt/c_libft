@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/02 19:05:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/03 14:26:41 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_islower(char c);
 int		ft_isupper(char c);
+int		ft_isspace(int c);
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
