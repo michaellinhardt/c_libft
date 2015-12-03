@@ -41,6 +41,8 @@ int		test_memset(void);
 int		test_memset_(void *s, int c, size_t n);
 int		test_memalloc(void);
 int		test_memalloc_(size_t size);
+int		test_memdel(void);
+int		test_memdel_(void **ap);
 int		test_bzero(void);
 int		test_bzero_(void *s, size_t n);
 int		test_memcpy(void);
@@ -147,6 +149,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_memcmp());
 	// MEMALLOC
 	nb_err_total = (nb_err_total + test_memalloc());
+	// MEMDEL
+	nb_err_total = (nb_err_total + test_memdel());
 
 	// STRCPY
 	nb_err_total = (nb_err_total + test_strcpy());
@@ -576,6 +580,40 @@ int		test_memalloc_(size_t size)
 	else
 	{
 		printf("%s ->(%zu); memcmp = %d\n", FAIL, size, compare);
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
+int		test_memdel(void)
+{
+	int		nb_err;
+	char	*test[2];
+
+	*test = (char *)malloc(sizeof(char) * 3);
+	*test = "ok\0";
+	nb_err = 0;
+	test_display_title("FT_MEMDEL");
+
+	printf("%sNO TEST YET FOR THIS !!!%s\n", RED, WHITE);
+	//nb_err = (nb_err + test_memdel_((void **)test));
+
+	test_display_result("FT_MEMDEL", nb_err);
+	return (nb_err);
+}
+
+int		test_memdel_(void **ap)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	ft_memdel(ap);
+	if (ap == NULL)
+		printf("%s memdel\n", OK);
+	else
+	{
+		printf("%s memdel\n", FAIL);
 		nb_err = 1;
 	}
 	return (nb_err);
