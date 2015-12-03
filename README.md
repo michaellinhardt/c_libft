@@ -39,7 +39,7 @@
 
 [x] memalloc
 [x] memdel
-[ ] strnew
+[x] strnew
 [ ] strdel
 [ ] strclr
 [ ] striter
