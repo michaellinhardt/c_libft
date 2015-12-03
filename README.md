@@ -64,12 +64,12 @@
 
 ### bonus
 
-[ ] lstnew
-[ ] lstdelone
-[ ] lstdel
-[ ] lstadd
-[ ] lstiter
-[ ] lstmap
+[x] lstnew
+[x] lstdelone
+[x] lstdel
+[x] lstadd
+[x] lstiter
+[x] lstmap
 
 ### personnal add
 [x] islower
