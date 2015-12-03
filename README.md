@@ -42,7 +42,7 @@
 [x] strnew
 [x] strdel
 [x] strclr
-[ ] striter
+[x] striter
 [ ] striteri
 [ ] strmap
 [ ] strmapi
