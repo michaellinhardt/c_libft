@@ -55,11 +55,11 @@
 [x] itoa
 [x] putchar
 [x] putstr
-[ ] putendl
+[x] putendl
 [x] putnbr
 [x] putchar_fd
 [x] putstr_fd
-[ ] putendl_fd
+[x] putendl_fd
 [x] putnbr_fd
 
 ### bonus
