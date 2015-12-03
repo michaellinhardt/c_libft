@@ -17,6 +17,8 @@ void	test_pressenter();
 
 int		test_isalpha(void);
 int		test_isalpha_(int c);
+int		test_isdigit(void);
+int		test_isdigit_(int c);
 
 int		test_strlen(void);
 int		test_strlen_(char *str);
@@ -101,7 +103,10 @@ int		test_run(void)
 	/****************************
 	 * 		IS ???				*
 	 ****************************/
+	// ISALPHA
 	nb_err_total = (nb_err_total + test_isalpha());
+	// ISDIGIT
+	nb_err_total = (nb_err_total + test_isdigit());
 
 	/****************************
 	 * 		MEM FUNCTION		*
@@ -249,7 +254,6 @@ int		test_putchar_putstr_putnbr(void)
 	return (0);
 }
 
-
 int		test_isalpha(void)
 {
 	int		nb_err;
@@ -280,6 +284,39 @@ int		test_isalpha_(int c)
 		return (1);
 	}
 }
+
+int		test_isdigit(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	// ISALPHA
+	test_display_title("FT_ISDIGIT");
+	nb_err = (nb_err + test_isdigit_('a'));
+	nb_err = (nb_err + test_isdigit_('+'));
+	nb_err = (nb_err + test_isdigit_('0'));
+	nb_err = (nb_err + test_isdigit_('9'));
+	nb_err = (nb_err + test_isdigit_('4'));
+	test_display_result("FT_ISDIGIT", nb_err);
+
+	return (nb_err);
+}
+
+int		test_isdigit_(int c)
+{
+	if ((isdigit(c) - ft_isdigit(c)) == 0)
+	{
+		printf("%s ft_isdigit(%c) [ %d ]\n", OK, c, ft_isdigit(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_isdigit(%c) [ %d ]\n", FAIL, c, ft_isdigit(c));
+		return (1);
+	}
+}
+
 
 int		test_toupper_tolower(void)
 {

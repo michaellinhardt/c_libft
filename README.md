@@ -28,7 +28,7 @@
 [x] strncmp
 [ ] atoi
 [x] isalpha
-[ ] isdigit
+[x] isdigit
 [ ] isalnum
 [ ] isascii
 [ ] isprint
