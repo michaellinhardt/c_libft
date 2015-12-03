@@ -39,6 +39,8 @@ int		test_tolower_(int c);
 
 int		test_memset(void);
 int		test_memset_(void *s, int c, size_t n);
+int		test_memalloc(void);
+int		test_memalloc_(size_t size);
 int		test_bzero(void);
 int		test_bzero_(void *s, size_t n);
 int		test_memcpy(void);
@@ -143,6 +145,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_memchr());
 	// MEMCMP
 	nb_err_total = (nb_err_total + test_memcmp());
+	// MEMALLOC
+	nb_err_total = (nb_err_total + test_memalloc());
 
 	// STRCPY
 	nb_err_total = (nb_err_total + test_strcpy());
@@ -533,6 +537,50 @@ int		test_tolower_(int c)
 		return (1);
 	}
 }
+
+int		test_memalloc(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+	test_display_title("FT_MEMALLOC");
+	
+	nb_err = (nb_err + test_memalloc_(0));
+	nb_err = (nb_err + test_memalloc_(22));
+	nb_err = (nb_err + test_memalloc_(23387));
+
+	test_display_result("FT_MEMALLOC", nb_err);
+	return (nb_err);
+}
+
+int		test_memalloc_(size_t size)
+{
+	int		nb_err;
+	int		compare;
+	char	*ret_1;
+	char	*ret_2;
+
+	nb_err = 0;
+
+	ret_1 = (char *)malloc(sizeof(char) * size);
+	bzero(ret_1, size);
+	ret_2 = ft_memalloc(size);
+	if (!ret_1 && !ret_2)
+		compare = 0;
+	else if (ret_1 && ret_2)
+		compare = memcmp(ret_1, ret_2, size);
+	else
+		compare = 1;
+	if (compare == 0)
+		printf("%s ->(%zu); memcmp = %d\n", OK, size , compare);
+	else
+	{
+		printf("%s ->(%zu); memcmp = %d\n", FAIL, size, compare);
+		nb_err = 1;
+	}
+	return (nb_err);
+}
+
 
 int		test_memset(void)
 {

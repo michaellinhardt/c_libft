@@ -37,7 +37,7 @@
 
 ### suplementary functions
 
-[ ] memalloc
+[x] memalloc
 [ ] memdel
 [ ] strnew
 [ ] strdel
