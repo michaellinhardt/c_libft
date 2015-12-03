@@ -40,8 +40,8 @@
 [x] memalloc
 [x] memdel
 [x] strnew
-[ ] strdel
-[ ] strclr
+[x] strdel
+[x] strclr
 [ ] striter
 [ ] striteri
 [ ] strmap
