@@ -23,6 +23,8 @@ int		test_isalnum(void);
 int		test_isalnum_(int c);
 int		test_isascii(void);
 int		test_isascii_(int c);
+int		test_isprint(void);
+int		test_isprint_(int c);
 
 int		test_strlen(void);
 int		test_strlen_(char *str);
@@ -115,6 +117,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_isalnum());
 	// ISASCII
 	nb_err_total = (nb_err_total + test_isascii());
+	// ISPRINT
+	nb_err_total = (nb_err_total + test_isprint());
 
 	/****************************
 	 * 		MEM FUNCTION		*
@@ -261,6 +265,39 @@ int		test_putchar_putstr_putnbr(void)
 
 	return (0);
 }
+
+int		test_isprint(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	// ISPRINT
+	test_display_title("FT_ISPRINT");
+	nb_err = (nb_err + test_isprint_(31));
+	nb_err = (nb_err + test_isprint_(32));
+	nb_err = (nb_err + test_isprint_(126));
+	nb_err = (nb_err + test_isprint_(127));
+	nb_err = (nb_err + test_isprint_(66));
+	test_display_result("FT_ISPRINT", nb_err);
+
+	return (nb_err);
+}
+
+int		test_isprint_(int c)
+{
+	if ((isprint(c) - ft_isprint(c)) == 0)
+	{
+		printf("%s ft_isprint(%c) [ %d ]\n", OK, c, ft_isprint(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_isprint(%c) [ %d ]\n", FAIL, c, ft_isprint(c));
+		return (1);
+	}
+}
+
 
 int		test_isascii(void)
 {
