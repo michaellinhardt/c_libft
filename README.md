@@ -43,7 +43,7 @@
 [x] strdel
 [x] strclr
 [x] striter
-[ ] striteri
+[x] striteri
 [ ] strmap
 [ ] strmapi
 [ ] strequ
