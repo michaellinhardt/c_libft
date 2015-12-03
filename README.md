@@ -50,7 +50,7 @@
 [x] strnequ
 [x] strsub
 [x] strjoin
-[ ] strtrim
+[x] strtrim
 [ ] strsplit
 [ ] itoa
 [x] putchar
