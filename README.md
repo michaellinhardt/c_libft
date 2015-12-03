@@ -30,7 +30,7 @@
 [x] isalpha
 [x] isdigit
 [x] isalnum
-[ ] isascii
+[x] isascii
 [ ] isprint
 [x] toupper
 [x] tolower

@@ -21,6 +21,8 @@ int		test_isdigit(void);
 int		test_isdigit_(int c);
 int		test_isalnum(void);
 int		test_isalnum_(int c);
+int		test_isascii(void);
+int		test_isascii_(int c);
 
 int		test_strlen(void);
 int		test_strlen_(char *str);
@@ -109,8 +111,10 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_isalpha());
 	// ISDIGIT
 	nb_err_total = (nb_err_total + test_isdigit());
-	// ISDIGIT
+	// ISALNUM
 	nb_err_total = (nb_err_total + test_isalnum());
+	// ISASCII
+	nb_err_total = (nb_err_total + test_isascii());
 
 	/****************************
 	 * 		MEM FUNCTION		*
@@ -258,13 +262,48 @@ int		test_putchar_putstr_putnbr(void)
 	return (0);
 }
 
+int		test_isascii(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	// ISALNUM
+	test_display_title("FT_ISASCII");
+	nb_err = (nb_err + test_isascii_(128));
+	nb_err = (nb_err + test_isascii_(127));
+	nb_err = (nb_err + test_isascii_(0));
+	nb_err = (nb_err + test_isascii_(-1));
+	nb_err = (nb_err + test_isascii_(201));
+	nb_err = (nb_err + test_isascii_(67));
+	test_display_result("FT_ISASCII", nb_err);
+
+	return (nb_err);
+}
+
+int		test_isascii_(int c)
+{
+	if ((isascii(c) - ft_isascii(c)) == 0)
+	{
+		printf("%s ft_isascii(%c) [ %d ]\n", OK, c, ft_isascii(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_isascii(%c) [ %d ]\n", FAIL, c, ft_isascii(c));
+		return (1);
+	}
+}
+
+
+
 int		test_isalnum(void)
 {
 	int		nb_err;
 
 	nb_err = 0;
 
-	// ISALPHA
+	// ISALNUM
 	test_display_title("FT_ISALNUM");
 	nb_err = (nb_err + test_isalnum_('a'));
 	nb_err = (nb_err + test_isalnum_('+'));
