@@ -52,7 +52,7 @@
 [x] strjoin
 [x] strtrim
 [x] strsplit
-[ ] itoa
+[x] itoa
 [x] putchar
 [x] putstr
 [ ] putendl

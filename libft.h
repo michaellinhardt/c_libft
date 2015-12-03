@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 19:23:36 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/03 19:53:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 
 char				*ft_itoa(int n);
+void				itoa_isnegative(int *n, int *negative);
 int					ft_atoi(const char *nptr);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
@@ -84,7 +85,6 @@ int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
-int					ft_strtrim_end(char const *s, char *ret);
 char				**ft_strsplit(char const *s, char c);
 
 char				*ft_stralloc(const char *s);
