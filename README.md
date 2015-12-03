@@ -29,7 +29,7 @@
 [ ] atoi
 [x] isalpha
 [x] isdigit
-[ ] isalnum
+[x] isalnum
 [ ] isascii
 [ ] isprint
 [x] toupper

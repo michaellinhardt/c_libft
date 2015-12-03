@@ -19,6 +19,8 @@ int		test_isalpha(void);
 int		test_isalpha_(int c);
 int		test_isdigit(void);
 int		test_isdigit_(int c);
+int		test_isalnum(void);
+int		test_isalnum_(int c);
 
 int		test_strlen(void);
 int		test_strlen_(char *str);
@@ -107,6 +109,8 @@ int		test_run(void)
 	nb_err_total = (nb_err_total + test_isalpha());
 	// ISDIGIT
 	nb_err_total = (nb_err_total + test_isdigit());
+	// ISDIGIT
+	nb_err_total = (nb_err_total + test_isalnum());
 
 	/****************************
 	 * 		MEM FUNCTION		*
@@ -253,6 +257,41 @@ int		test_putchar_putstr_putnbr(void)
 
 	return (0);
 }
+
+int		test_isalnum(void)
+{
+	int		nb_err;
+
+	nb_err = 0;
+
+	// ISALPHA
+	test_display_title("FT_ISALNUM");
+	nb_err = (nb_err + test_isalnum_('a'));
+	nb_err = (nb_err + test_isalnum_('+'));
+	nb_err = (nb_err + test_isalnum_('7'));
+	nb_err = (nb_err + test_isalnum_('z'));
+	nb_err = (nb_err + test_isalnum_('@'));
+	nb_err = (nb_err + test_isalnum_('!'));
+	nb_err = (nb_err + test_isalnum_('0'));
+	test_display_result("FT_ISALNUM", nb_err);
+
+	return (nb_err);
+}
+
+int		test_isalnum_(int c)
+{
+	if ((isalnum(c) - ft_isalnum(c)) == 0)
+	{
+		printf("%s ft_isalnum(%c) [ %d ]\n", OK, c, ft_isalnum(c));
+		return (0);
+	}
+	else
+	{
+		printf("%s ft_isalnum(%c) [ %d ]\n", FAIL, c, ft_isalnum(c));
+		return (1);
+	}
+}
+
 
 int		test_isalpha(void)
 {
