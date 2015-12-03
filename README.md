@@ -51,7 +51,7 @@
 [x] strsub
 [x] strjoin
 [x] strtrim
-[ ] strsplit
+[x] strsplit
 [ ] itoa
 [x] putchar
 [x] putstr
