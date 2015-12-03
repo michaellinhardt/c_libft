@@ -49,7 +49,7 @@
 [x] strequ
 [x] strnequ
 [x] strsub
-[ ] strjoin
+[x] strjoin
 [ ] strtrim
 [ ] strsplit
 [ ] itoa
