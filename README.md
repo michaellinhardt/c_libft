@@ -48,7 +48,7 @@
 [x] strmapi
 [x] strequ
 [x] strnequ
-[ ] strsub
+[x] strsub
 [ ] strjoin
 [ ] strtrim
 [ ] strsplit
