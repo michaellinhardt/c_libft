@@ -45,7 +45,7 @@
 [x] striter
 [x] striteri
 [x] strmap
-[ ] strmapi
+[x] strmapi
 [ ] strequ
 [ ] strnequ
 [ ] strsub
