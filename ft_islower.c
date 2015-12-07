@@ -6,13 +6,13 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:41:43 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/11/28 13:41:44 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/07 22:08:54 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_islower(char c)
+int		ft_islower(int c)
 {
 	return (c >= 'a' && c <= 'z');
 }

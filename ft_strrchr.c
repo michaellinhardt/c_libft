@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 18:26:28 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/02 18:53:04 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/07 22:12:16 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ char	*ft_strrchr(const char *s, int c)
 			last = (char *)s;
 		s++;
 	}
+	if (*s == c)
+		last = (char *)s;
 	return (last);
 }

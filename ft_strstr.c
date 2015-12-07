@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 18:38:44 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/02 19:30:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/07 21:24:31 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 char	*ft_strstr(const char *s1, const char *s2)
 {
+	if (s2[0] == '\0')
+		return ((char *)s1);
 	return (ft_strnstr(s1, s2, ft_strlen(s1)));
 }

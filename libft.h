@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 19:53:52 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/07 22:08:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
-int					ft_islower(char c);
-int					ft_isupper(char c);
+int					ft_islower(int c);
+int					ft_isupper(int c);
 int					ft_isspace(int c);
 
 void				ft_bzero(void *s, size_t n);
