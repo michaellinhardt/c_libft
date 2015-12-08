@@ -6,13 +6,13 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 14:09:12 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 01:54:43 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 03:12:27 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strcat(char *s1, const char *s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	char	*ret;
 

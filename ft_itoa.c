@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:48:31 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 19:54:12 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:59:48 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	itoa_isnegative(int *n, int *negative)
 	}
 }
 
-char*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		tmpn;
 	int		len;

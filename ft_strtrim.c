@@ -6,12 +6,12 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 18:50:05 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/07 23:19:55 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 03:08:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 char	*ft_strtrim(char const *s)
 {
 	int		start;
