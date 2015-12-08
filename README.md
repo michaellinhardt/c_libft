@@ -77,8 +77,6 @@
 [x] isspace
 [x] stralloc
 
-[ ] header define color 
-
 ###changelog
 - 26 nov. 2015
 	- Start project, rebuild this list of functions
