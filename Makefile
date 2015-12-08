@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2015/12/08 03:40:58 by mlinhard         ###   ########.fr        #
+#    Updated: 2015/12/08 03:46:00 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,8 +69,8 @@ all: $(NAME)
 
 #TRANSFORM .c FILE INTO .o WITH OBJ FOLDER
 #$(FOLDER_OBJ)%.o: $(FOLDER_SRC)%.c
-	#@mkdir -p $(FOLDER_OBJ)
-	#$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
+#@mkdir -p $(FOLDER_OBJ)
+#$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I./ -c -o $@ $<
