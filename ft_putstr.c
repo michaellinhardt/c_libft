@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:42:39 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/11/28 13:42:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:26:42 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_putstr(char const *s)
 {
-	write(1, s, ft_strlen(s));
+	if (s)
+		ft_putstr_fd(s, 1);
 }

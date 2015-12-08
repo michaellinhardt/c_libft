@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:57:19 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 19:57:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:26:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_putendl(char const *s)
 {
-	ft_putendl_fd(s, 1);
+	if (s)
+		ft_putendl_fd(s, 1);
 }
