@@ -1,6 +1,5 @@
 # https://github.com/nesthub/
-# PATH VAR & VERSION 
-VERSION 		= v0.9
+# PATH VAR
 PATH_ROOT		= ~/42/
 PATH_CURR		= $(shell pwd)
 ifneq ($(wildcard $(PATH_CURR)/.path_root), )
@@ -56,7 +55,7 @@ LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
 
 all: $(NAME)
 
-#TRANSFORM .c FILE INTO .o
+#TRANSFORM .c FILE INTO .o WITH OBJ FOLDER
 #$(FOLDER_OBJ)%.o: $(FOLDER_SRC)%.c
 	#@mkdir -p $(FOLDER_OBJ)
 	#$(CC) $(CFLAGS) -I$(FOLDER_INC) -c -o $@ $<
@@ -85,12 +84,6 @@ vardump:
 	@echo PATH_CURR: $(PATH_CURR)
 	@echo PATH_PROJET: $(PATH_PROJET)
 
-test: clear re
-	rm -f a.out
-	$(CC) $(CFLAGS) -I$(FOLDER_INC) -L./ main.c -lft
-	rm -f *.o
-	./a.out
-
 # display status for both git42 and github in the current project
 status: -is-project-folder save-dev -status
 -status:
@@ -105,7 +98,7 @@ else
 	@cd $(PATH_PROJET)/github && echo "$(OK) $(YELLOW)$(PATH_PROJET)/github/ git status$(BLANK)" && git status -s
 endif
 
-#VERIF IS THE CURRENT VAR PATH_PROJET RETURN TO A PROJECT FOLDER
+#VERIF IF THE CURRENT VAR PATH_PROJET RETURN TO A PROJECT FOLDER
 -is-project-folder:
 ifeq ($(PATH_PROJET),0)
 	$(error Cant find .path_root file to define folder project)
@@ -192,5 +185,3 @@ load-workspace:
 	cp ~/42/config_workspace/conf_file/zshrc ~/.zshrc
 	@echo "$(BLUE)*** [$(YELLOW)LOAD$(BLUE)] conf_file/vimrc$(BLANK)"
 	cp ~/42/config_workspace/conf_file/vimrc ~/.vimrc
-
-
