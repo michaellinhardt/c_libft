@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 06:16:59 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 15:32:54 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:53:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char *tmp;
 
-	if (!(s) || n < 1)
+	if (n < 1)
 		return (NULL);
 	tmp = (unsigned char *)s;
 	while (n--)

@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:59:06 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 18:02:34 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:01:14 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	fresh = ft_strnew(ft_strlen(s));
+	if (!fresh)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{

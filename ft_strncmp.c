@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 19:33:17 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/07 22:42:16 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:56:04 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
-	if (!(s1) || !(s2))
-		return (-1);
 	if (n == 0)
 		return (0);
 	i = 0;

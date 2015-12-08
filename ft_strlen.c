@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:42:59 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/01 07:06:44 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:54:10 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
-	if (!s)
-		return (0);
 	i = 0;
 	while (s[i])
 		i++;

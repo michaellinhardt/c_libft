@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 15:50:40 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/02 16:29:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:54:58 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char		*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	char	*ret;
 
-	if (!s2)
-		return (NULL);
 	ret = s1;
 	while (*s1)
 		s1++;

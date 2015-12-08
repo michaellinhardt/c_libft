@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:41:10 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 19:47:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 02:02:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	**ft_strsplit(const char *s, char c)
 				tab[d++] = ft_strsub(s, start, (end - start));
 		}
 	}
+	else
+		return (NULL);
 	tab[d] = NULL;
 	return (tab);
 }

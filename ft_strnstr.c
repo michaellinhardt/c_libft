@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/02 18:57:14 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/07 21:26:29 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:55:41 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 
 	if (s2[0] == '\0')
 		return ((char *)s1);
-	if (n == 0 || !s1 || !s2)
+	if (n == 0)
 		return (NULL);
 	if (*s2 == '\0')
 		return ((char *)s1);

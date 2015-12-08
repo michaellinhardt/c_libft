@@ -6,7 +6,7 @@
 /*   By: mlinhard <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 06:40:02 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/03 15:33:05 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/08 01:53:21 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	const char	*tmp1;
 	const char	*tmp2;
 
-	if (!(s1) || !(s2))
-		return (0);
 	tmp1 = s1;
 	tmp2 = s2;
 	i = 0;
