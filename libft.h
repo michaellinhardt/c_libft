@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/10 04:44:39 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:10:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ char				*ft_itoa(int n);
 int					ft_atoi(const char *nptr);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+char				*ft_strtoupper(char *str);
+char				*ft_strtolower(char *str);
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -60,6 +62,7 @@ int					ft_isprint(int c);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isspace(int c);
+int					ft_countwords(const char *s, char c);
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
@@ -71,6 +74,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
+char				*ft_stralloc(const char *s);
 
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
@@ -85,8 +89,6 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-
-char				*ft_stralloc(const char *s);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));

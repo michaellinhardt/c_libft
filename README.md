@@ -75,3 +75,6 @@
 [x] isupper
 [x] isspace
 [x] stralloc
+[x] strtolower
+[x] strtoupper
+[x] countwords
