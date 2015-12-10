@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 03:40:02 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/10 04:44:39 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 
 char				*ft_itoa(int n);
-void				itoa_isnegative(int *n, int *negative);
 int					ft_atoi(const char *nptr);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
