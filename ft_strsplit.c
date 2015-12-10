@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:41:10 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/10 06:11:50 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/10 13:55:42 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	**ft_strsplit(const char *s, char c)
 	tab = NULL;
 	i = 0;
 	d = 0;
-	if (!s || !(tab = (char **)malloc(sizeof(*tab) * (ft_strlen(s) / 2 + 2))))
+	if (!s || !(tab =
+				(char **)malloc(sizeof(*tab) * (ft_countwords(s, c) + 1))))
 		return (NULL);
 	while (s[i] != '\0')
 	{
