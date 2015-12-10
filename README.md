@@ -78,3 +78,4 @@
 [x] strtolower
 [x] strtoupper
 [x] countwords
+[x] pow
