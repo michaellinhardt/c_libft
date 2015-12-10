@@ -1,8 +1,7 @@
 # libft
 - Langage: C
 - Subject: 42 school first project, rebuild this list of functions and a library to use them with futur project. See doc folder for more info.
-- Start: 26 nov. 2015
-- End: WIP
+- dec. 2015
 
 ### libc functions
 
@@ -76,14 +75,3 @@
 [x] isupper
 [x] isspace
 [x] stralloc
-
-###changelog
-- 26 nov. 2015
-	- Start project, rebuild this list of functions
-	- Add README.md, Makefile, .gitignore
-	- README.md credit to dasilvacontin@github
-- 27 nov. 2015
-	- Add libft.h with all declaration
-	- Add test file main.c for this uploaded functions ->
-	- Add bzero, islower, isupper, memset, putchar, putchar_fd, putnbr, putnbr_fd, putstr, putstr_fd, strcmp, strlen, tolower, toupper, memcpy,memccpy, isalpha
-	- Add color and "press enter mode" to test file main.c
