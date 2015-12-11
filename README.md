@@ -80,3 +80,4 @@
 [x] strrev
 [x] countwords
 [x] pow
+[x] pcol

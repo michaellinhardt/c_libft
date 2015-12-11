@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/11 11:42:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/11 12:37:03 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_strtoupper(char *str);
 char				*ft_strtolower(char *str);
-
+char				*ft_pcol(char *s);
+int					ft_countwords(const char *s, char c);
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -66,7 +67,6 @@ int					ft_isprint(int c);
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isspace(int c);
-int					ft_countwords(const char *s, char c);
 
 void				ft_bzero(void *s, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
