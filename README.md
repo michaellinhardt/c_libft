@@ -77,5 +77,6 @@
 [x] stralloc
 [x] strtolower
 [x] strtoupper
+[x] strrev
 [x] countwords
 [x] pow

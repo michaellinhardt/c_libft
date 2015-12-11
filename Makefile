@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2015/12/10 14:45:53 by mlinhard         ###   ########.fr        #
+#    Updated: 2015/12/11 10:51:31 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ LIST_SRC		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_memchr.c ft_memcmp.c ft_memalloc.c ft_memdel.c ft_strnew.c \
 				  ft_atoi.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c \
 				  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
-				  ft_strtolower.c ft_strtoupper.c ft_countwords.c ft_pow.c
+				  ft_strtolower.c ft_strtoupper.c ft_countwords.c ft_pow.c ft_strrev.c
 
 #BUILD LIST
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
@@ -99,10 +99,13 @@ test: clear re
 	@./a.out
 	@echo "$(BLANK)"
 
-moulitest: clear re
+# TEST FOR LIBFT
+moulitest: -is-project-folder -is-dev-folder clear re moulitest-
+unitest: -is-project-folder -is-dev-folder clear re unitest-
+libft-test: -is-project-folder -is-dev-folder clear re unitest- moulitest-
+moulitest-:
 	@cd $(PATH_PROJET)/moulitest && make libft_bonus
-
-unitest: clear re
+unitest-:
 	rm -rf $(PATH_PROJET)/unit-test/libft
 	cp -R $(PATH_PROJET)/dev/ $(PATH_PROJET)/unit-test/libft
 	@cd $(PATH_PROJET)/unit-test/libft-unit-test && make re && make f
@@ -131,6 +134,11 @@ endif
 -is-project-folder:
 ifeq ($(PATH_PROJET),0)
 	$(error Cant find .path_root file to define folder project)
+endif
+# VERIF IS CURRENT FOLDER IS DEV FOLDER
+-is-dev-folder:
+ifneq ($(wildcard $(PATH_CURR)/.path_root), )
+	$(error You are not in dev folder!)
 endif
 
 #PUSH TO BOTH GIT42 AND GItHUB
