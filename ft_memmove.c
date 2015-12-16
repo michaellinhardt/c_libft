@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 06:17:04 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 13:13:38 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 13:27:30 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ void	*ft_memmove(void *s1, const void *s2, size_t n)
 		ft_memcpy(s1, s2, n);
 	return (s1);
 }
-
