@@ -83,5 +83,5 @@
 [x] pcol
 [x] arrcpy
 [x] arrlen
-[x] arrcpy
+[x] arrfree
 [x] arrprint
