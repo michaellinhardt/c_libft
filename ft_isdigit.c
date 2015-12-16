@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 13:47:53 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 03:34:38 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:31:51 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_isdigit(int c)
 {

@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 14:24:59 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/10 14:40:31 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:32:02 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_isspace(int c)
 {

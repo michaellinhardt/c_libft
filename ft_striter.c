@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:41:29 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 03:38:07 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:33:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_striter(char *s, void (*f)(char*))
 {

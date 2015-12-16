@@ -6,11 +6,12 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 17:59:06 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 03:38:44 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:57:28 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

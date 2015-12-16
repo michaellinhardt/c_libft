@@ -6,11 +6,12 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:30:15 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 03:36:24 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 19:02:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	ft_memdel(void **ap)
 {

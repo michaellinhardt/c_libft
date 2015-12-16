@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 11:29:08 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/10 13:09:41 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:33:06 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_countwords(const char *s, char c)
 {

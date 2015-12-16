@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 07:24:27 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/08 03:37:50 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:33:25 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strcpy(char *dst, const char *src)
 {

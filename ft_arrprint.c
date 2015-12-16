@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 13:35:09 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 14:16:15 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:25:34 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 void	ft_arrprint(char **arr)
 {

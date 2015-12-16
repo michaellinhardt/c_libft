@@ -6,11 +6,12 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:48:31 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/10 04:44:20 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:50:36 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static void	itoa_isnegative(int *n, int *negative)
 {

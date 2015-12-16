@@ -6,11 +6,9 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 12:18:50 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/11 12:41:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:33:17 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_pcol(char *s)
 {
