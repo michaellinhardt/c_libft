@@ -81,3 +81,7 @@
 [x] countwords
 [x] pow
 [x] pcol
+[x] arrcpy
+[x] arrlen
+[x] arrcpy
+[x] arrprint

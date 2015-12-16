@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/11 12:37:03 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/16 14:16:16 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ char				*ft_strtoupper(char *str);
 char				*ft_strtolower(char *str);
 char				*ft_pcol(char *s);
 int					ft_countwords(const char *s, char c);
+
+size_t				ft_arrlen(char **arr);
+char				**ft_arrcpy(char **arr);
+void				ft_arrfree(char **arr);
+void				ft_arrprint(char **arr);
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
