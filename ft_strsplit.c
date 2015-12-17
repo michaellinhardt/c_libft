@@ -6,9 +6,12 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 19:41:10 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:33:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:47:27 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	**ft_strsplit(const char *s, char c)
 {

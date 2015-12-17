@@ -6,9 +6,11 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 08:58:27 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:33:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:53:06 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strtoupper(char *str)
 {

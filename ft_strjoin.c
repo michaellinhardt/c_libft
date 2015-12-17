@@ -6,9 +6,11 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 18:44:30 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:33:25 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:46:40 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

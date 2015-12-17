@@ -6,9 +6,12 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 10:53:19 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:33:28 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:53:46 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strrev(char *str)
 {

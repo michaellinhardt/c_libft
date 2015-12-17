@@ -6,9 +6,11 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 20:06:25 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:33:13 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:47:52 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 t_list		*ft_lstnew(void const *content, size_t content_size)
 {

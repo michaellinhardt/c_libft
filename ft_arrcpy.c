@@ -6,9 +6,12 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 13:33:22 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/16 18:25:01 by mlinhard         ###   ########.fr       */
+/*   Updated: 2015/12/17 21:56:21 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	**ft_arrcpy(char **arr)
 {
