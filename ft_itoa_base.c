@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arrcpy.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 13:33:22 by mlinhard          #+#    #+#             */
-/*   Updated: 2015/12/17 21:56:21 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/02/10 00:01:24 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/02/10 00:15:55 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,14 @@ static size_t	ft_itoa_base_len(long int n, size_t lb)
 	return (l);
 }
 
-static void		ft_itoa_base_minus(long int *bn, char *s)
+static void		ft_itoa_base_fill(long int bn, char *s, const char *b, size_t lb)
 {
-	if (*bn < 0)
-	{
-		*s = '-';
-		*bn = -(*bn);
-	}
-}
-
-static void		ft_itoa_base_fill(long int n, char *s, const char *b, size_t lb)
-{
-	if (n == 0)
+	if (bn == 0)
 		*s = *b;
-	while (n != 0)
+	while (bn != 0)
 	{
-		*s-- = *(b + ((unsigned long int)n % lb));
-		n /= lb;
+		*s-- = *(b + ((unsigned long int)bn % lb));
+		bn /= lb;
 	}
 }
 
@@ -58,7 +49,8 @@ char			*ft_itoa_base(int n, const char *b)
 	l = ft_itoa_base_len(bn, lb);
 	if (!(s = ft_strnew(l)))
 		return (NULL);
-	ft_itoa_base_minus(&bn, s);
+	if (bn < 0 && (*s = '-'))
+		bn = -(bn);
 	ft_itoa_base_fill(bn, s + l - 1, b, lb);
 	return (s);
 }

@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/10 00:00:05 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/02/10 00:09:38 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,7 @@ fclean: clean
 
 re: fclean all
 
-clear:
-	clear
-
-test: clear re
+test: re
 	$(CC) $(CFLAGS) -I./ main.c libft.a
 	./a.out
 
