@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ulitoa_base.c                                   :+:      :+:    :+:   */
+/*   ft_uimaxtoa_base.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/10 23:01:03 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/10 23:01:09 by mlinhard         ###   ########.fr       */
+/*   Created: 2016/02/10 00:01:24 by mlinhard          #+#    #+#             */
+/*   Updated: 2016/02/14 03:25:01 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_itoa_base_len(unsigned long int n, size_t lb)
+static size_t	ft_itoa_base_len(uintmax_t n, size_t lb)
 {
 	size_t	l;
 
@@ -25,23 +25,23 @@ static size_t	ft_itoa_base_len(unsigned long int n, size_t lb)
 	return (l);
 }
 
-static void		ft_itoa_base_fill(unsigned long int bn, char *s, const char *b, size_t lb)
+static void		ft_itoa_base_fill(uintmax_t bn, char *s, const char *b, size_t lb)
 {
 	if (bn == 0)
 		*s = *b;
 	while (bn != 0)
 	{
-		*s-- = *(b + ((unsigned long int)bn % lb));
+		*s-- = *(b + ((uintmax_t)bn % lb));
 		bn /= lb;
 	}
 }
 
-char			*ft_ulitoa_base(unsigned long int n, const char *b)
+char			*ft_uimaxtoa_base(uintmax_t n, const char *b)
 {
-	char				*s;
-	size_t				l;
-	unsigned long int	bn;
-	size_t				lb;
+	char		*s;
+	size_t		l;
+	uintmax_t	bn;
+	size_t		lb;
 
 	bn = n;
 	lb = ft_strlen(b);
