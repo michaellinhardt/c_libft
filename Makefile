@@ -6,12 +6,12 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/02/17 03:51:42 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/03/10 16:12:28 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				= gcc
-CFLAGS			= -Wall -Werror -Wextra
+CFLAGS			= -Wall -Werror -Wextra -g
 NAME			= libft.a
 LIST_HEADER		= libft.h
 LIST_SRC		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
@@ -29,7 +29,7 @@ LIST_SRC		= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 				  ft_strtolower.c ft_strtoupper.c ft_countwords.c ft_pow.c ft_strrev.c \
 				  ft_pcol.c ft_imaxtoa_base.c ft_uimaxtoa_base.c ft_wstrtostr.c \
-				  ft_wchartostr.c
+				  ft_wchartostr.c ft_strrealloc.c
 LIST_OBJ		= $(subst .c,.o,$(LIST_SRC))
 
 all: $(NAME)
@@ -49,8 +49,14 @@ fclean: clean
 
 re: fclean all
 
-test: re
+-main:
 	$(CC) $(CFLAGS) -I./ main.c libft.a
+
+test: all -main
 	./a.out
+
+leaks: all -main -leaks
+-leaks:
+	@valgrind --leak-check=yes --track-origins=yes ./a.out
 
 .PHONY: clean fclean re clear test

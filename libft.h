@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/02/17 03:45:11 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/03/10 16:12:18 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ char				**ft_strsplit(char const *s, char c);
 
 char				*ft_wchartostr(wchar_t const wc);
 char				*ft_wstrtostr(wchar_t const *src);
+char				*ft_strrealloc(char *str, int size);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
