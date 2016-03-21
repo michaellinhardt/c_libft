@@ -81,7 +81,9 @@
 [x] countwords
 [x] pow
 [x] pcol
-[x] arrcpy
-[x] arrlen
-[x] arrfree
-[x] arrprint
+[x] strrealloc
+[x] uimaxtoa_base
+[x] imaxtoa_base
+[x] ldtoa
+[x] wchartostr
+[x] wstrtostr

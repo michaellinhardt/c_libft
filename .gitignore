@@ -5,3 +5,4 @@ a.out
 ._*
 main.c.old
 main.c
+*.dSYM
