@@ -6,7 +6,7 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 13:43:36 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/04/09 05:28:00 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 06:06:16 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include "ft_printf.h"
+# include "get_next_line.h"
 # include <string.h>
 # include <stdint.h>
 # include <wchar.h>

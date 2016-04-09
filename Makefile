@@ -6,7 +6,7 @@
 #    By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/08 03:40:52 by mlinhard          #+#    #+#              #
-#    Updated: 2016/04/09 05:26:18 by mlinhard         ###   ########.fr        #
+#    Updated: 2016/04/09 06:07:36 by mlinhard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC				= gcc
 CFLAGS			= -Wall -Werror -Wextra
 NAME			= libft.a
 LIST_HEADER		= libft.h
-LIST_SRC_LIBFT	= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
+LIST_C_LIBFT	= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_strcat.c ft_strncat.c ft_strlcat.c ft_strchr.c \
 				  ft_strstr.c ft_strnstr.c ft_strncmp.c ft_putendl.c ft_itoa.c \
 				  ft_putchar.c ft_putchar_fd.c ft_putstr.c ft_putstr_fd.c \
@@ -33,38 +33,43 @@ LIST_SRC_LIBFT	= ft_strlen.c ft_strcmp.c ft_strdup.c ft_strcpy.c ft_strncpy.c \
 				  ft_strrchr.c ft_lstmap.c ft_striter.c ft_strnequ.c \
 				  ft_strnew.c ft_strsplit.c ft_lstiter.c ft_strrev.c \
 				  ft_wstrtostr.c
-LIST_SRC_PRINTF	= ft_printf.c ft_printf_join.c ft_printf_parse.c \
-				ft_printf_parse_option.c ft_printf_build_color.c \
-				ft_printf_build_array.c ft_printf_build_format.c \
-				ft_printf_build_tools.c ft_printf_build_str.c \
-				ft_printf_build_int.c ft_printf_build_int_base.c \
-				ft_printf_build_int_tools.c ft_printf_build_double.c \
-				ft_printf_build_double_short.c ft_printf_build_n.c \
-				ft_printf_build_write.c
-LIST_OBJ_LIBFT	= $(subst .c,.o,libft/$(LIST_SRC_LIBFT))
-LIST_OBJ_PRINTF	= $(subst .c,.o,printf/$(LIST_SRC_PRINTF))
+LIST_C_PRINTF	= ft_printf.c ft_printf_join.c ft_printf_parse.c \
+				  ft_printf_parse_option.c ft_printf_build_color.c \
+				  ft_printf_build_array.c ft_printf_build_format.c \
+				  ft_printf_build_tools.c ft_printf_build_str.c \
+				  ft_printf_build_int.c ft_printf_build_int_base.c \
+				  ft_printf_build_int_tools.c ft_printf_build_double.c \
+				  ft_printf_build_double_short.c ft_printf_build_n.c \
+				  ft_printf_build_write.c
+LIST_C_GNL		= get_next_line.c
+PATH_LIBFT		= $(addprefix libft/, $(LIST_C_LIBFT))
+PATH_PRINTF		= $(addprefix printf/, $(LIST_C_PRINTF))
+PATH_GNL		= $(addprefix gnl/, $(LIST_C_GNL))
+LIST_OBJ_LIBFT	= $(subst .c,.o,$(PATH_LIBFT))
+LIST_OBJ_PRINTF	= $(subst .c,.o,$(PATH_PRINTF))
+LIST_OBJ_GNL	= $(subst .c,.o,$(PATH_GNL))
 
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I./ -c -o $@ $<
+	$(CC) $(CFLAGS) -I./includes/ -c -o $@ $<
 
-$(NAME): $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF)
-	ar rc $(NAME) $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF)
+$(NAME): $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
+	ar rc $(NAME) $(LIST_OBJ_LIBFT) $(LIST_OBJ_PRINTF) $(LIST_OBJ_GNL)
 	ranlib $(NAME)
 
 clean:
 	rm -rf $(LIST_OBJ_LIBFT)
 	rm -rf $(LIST_OBJ_PRINTF)
+	rm -rf $(LIST_OBJ_GNL)
 
 fclean: clean
-	rm -rf
 	rm -rf $(NAME)
 
 re: fclean all
 
 -main:
-	$(CC) $(CFLAGS) -I./ main.c libft.a
+	$(CC) $(CFLAGS) -I./includes/ main.c libft.a
 
 test: all -main
 	./a.out

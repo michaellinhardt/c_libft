@@ -6,18 +6,17 @@
 /*   By: mlinhard <mlinhard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 03:25:51 by mlinhard          #+#    #+#             */
-/*   Updated: 2016/03/29 03:21:57 by mlinhard         ###   ########.fr       */
+/*   Updated: 2016/04/09 05:57:07 by mlinhard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <wchar.h>
 # include <locale.h>
 
 # define CWHI "\e[39m"
